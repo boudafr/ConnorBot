@@ -2,17 +2,24 @@
 @media only screen and (hover: none) and (pointer: coarse) {
 
 }
-
+/**/
 :root {
     --Con-bg-color: yellow;
     --Con-btn-color: green;
     --Con-width: 33vw;
 }
+/*Animantions*/
+@keyframes AniShowXHideDiv {
+    from {botom: calc(-1 * var(--Con-width)); }
+    to {bottom: 0;}
+}
 
+
+/*IDs*/
 #IdOuterDivOfCon {
     position: absolute;
     bottom: calc(-1 * var(--Con-width));
-    right: 0;
+    right: 1rem;
 
     height: var(--Con-width);
     width: var(--Con-width);

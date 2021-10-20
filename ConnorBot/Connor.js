@@ -36,7 +36,10 @@ let ConDisplay = (position = 'bottom') => {
 //sub functions of ConPrint
 
 var fShowXHide = () => {
-  console.log('ShowXHide BTN works')
+  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  let ShowXHideButton = document.getElementById('IdShowXHideButton')
+
+  OuterDivOfCon.style.animation = "AniShowXHideDiv 2s forwards"
 }
 
 let ConSourceBox = () => {
