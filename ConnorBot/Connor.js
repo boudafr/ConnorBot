@@ -37,30 +37,35 @@ let ConDisplay = (position = 'bottom') => {
 
 var fShowXHide = () => {
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  let ShowXHideButton = document.getElementById('IdShowXHideButton')
 
-  OuterDivOfCon.style.animation = "AniShowXHideDiv 2s forwards"
+  OuterDivOfCon.style.animation = "AniShowXHideDiv forwards"
+  OuterDivOfCon.style.display = "inline"
 }
 
+//except ConDisplayIn this function is required for all ConDsiplay<direction>() because it creates necessery objects
 let ConSourceBox = () => {
   //Creation of outer most div for ConBot
   let OuterDivOfCon = document.createElement("div")
   OuterDivOfCon.id = 'IdOuterDivOfCon'
   OuterDivOfCon.innerText = 'Test Text'
   document.body.appendChild(OuterDivOfCon)
-  //############
+  //################
 
   //Creation of button that pops up and hides Conbot
   let ShowXHideButton = document.createElement("button")
   ShowXHideButton.id = 'IdShowXHideButton'
   ShowXHideButton.addEventListener('click', function() { fShowXHide() }, false)
   document.body.appendChild(ShowXHideButton)
-  //##############
+  //################
   
 }
 
+//Each of next functions prints Connor Bot in respective position --- These functions are called by ConDisplay()
 let ConDisplayBottom = () => {
   ConSourceBox()
+
+  let ShowXHideButton = document.getElementById('IdShowXHideButton')
+  ShowXHideButton.style = "height: 1.5rem; width: 2rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem;"
 }
 
 let ConDisplayLeft = () => {

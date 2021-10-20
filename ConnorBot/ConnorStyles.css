@@ -1,4 +1,6 @@
-/* The only keyword prevents older browsers that do not support media queries with media features from applying the given styles. It has no effect on modern browsers. https://stackoverflow.com/questions/42025632/how-to-detect-only-with-css-mobile-screens*/
+/* 
+The only keyword prevents older browsers that do not support media queries with media features from applying the given styles. It has no effect on modern browsers. https://stackoverflow.com/questions/42025632/how-to-detect-only-with-css-mobile-screens
+*/
 @media only screen and (hover: none) and (pointer: coarse) {
 
 }
@@ -10,21 +12,27 @@
 }
 /*Animantions*/
 @keyframes AniShowXHideDiv {
-    from {botom: calc(-1 * var(--Con-width)); }
-    to {bottom: 0;}
+    0% {
+        height: 0;
+    }
+    100% {
+        height: var(--Con-width);
+    }
 }
 
 
 /*IDs*/
 #IdOuterDivOfCon {
     position: absolute;
-    bottom: calc(-1 * var(--Con-width));
+    bottom: 0;
     right: 1rem;
 
-    height: var(--Con-width);
+    height: 0;
     width: var(--Con-width);
 
-    color: var(--Con-bg-color);
+    background-color: var(--Con-bg-color);
+
+    display: none;
 }
 
 #IdShowXHideButton {
@@ -32,11 +40,9 @@
     bottom: 0;
     right: calc(var(--Con-width) / 2);
 
-    height: 1.5rem;
-    width: 2rem;
-
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    /*
+    height: 1.5rem; width: 2rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem;
+    */
 
     background-color: var(--Con-btn-color);
 }
