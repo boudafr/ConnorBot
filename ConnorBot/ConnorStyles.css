@@ -1,0 +1,35 @@
+/* The only keyword prevents older browsers that do not support media queries with media features from applying the given styles. It has no effect on modern browsers. https://stackoverflow.com/questions/42025632/how-to-detect-only-with-css-mobile-screens*/
+@media only screen and (hover: none) and (pointer: coarse) {
+
+}
+
+:root {
+    --Con-bg-color: yellow;
+    --Con-btn-color: green;
+    --Con-width: 33vw;
+}
+
+#IdOuterDivOfCon {
+    position: absolute;
+    bottom: calc(-1 * var(--Con-width));
+    right: 0;
+
+    height: var(--Con-width);
+    width: var(--Con-width);
+
+    color: var(--Con-bg-color);
+}
+
+#IdShowXHideButton {
+    position: absolute;
+    bottom: 0;
+    right: calc(var(--Con-width) / 2);
+
+    height: 1.5rem;
+    width: 2rem;
+
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+
+    background-color: var(--Con-btn-color);
+}

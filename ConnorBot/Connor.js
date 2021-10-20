@@ -1,0 +1,122 @@
+//Mandatory Functions
+
+  /*
+  Function that prints chatbox witch will serve as UI
+    Input: Two strings
+    Positions the chatbox into
+    different part of screen
+    based on the input if no
+    input is provided chatbox
+    is printed on bottom right
+    Output: Error messages into console
+  */
+let ConDisplay = (position = 'bottom') => {
+  switch (position) {
+    case 'bottom':
+      ConDisplayBottom()
+      break;
+    case 'right':
+      ConDisplayRight()
+      break;
+    case 'left':
+      ConDisplayLeft()
+      break;
+    case 'in':
+      ConDisplayIn()
+      break;
+    case 'top':
+      ConDisplayTop()
+      break;
+    default: ConDisplayBottom();
+  }
+}
+
+
+
+//sub functions of ConPrint
+
+var fShowXHide = () => {
+  console.log('ShowXHide BTN works')
+}
+
+let ConSourceBox = () => {
+  //Creation of outer most div for ConBot
+  let OuterDivOfCon = document.createElement("div")
+  OuterDivOfCon.id = 'IdOuterDivOfCon'
+  OuterDivOfCon.innerText = 'Test Text'
+  document.body.appendChild(OuterDivOfCon)
+  //############
+
+  //Creation of button that pops up and hides Conbot
+  let ShowXHideButton = document.createElement("button")
+  ShowXHideButton.id = 'IdShowXHideButton'
+  ShowXHideButton.addEventListener('click', function() { fShowXHide() }, false)
+  document.body.appendChild(ShowXHideButton)
+  //##############
+  
+}
+
+let ConDisplayBottom = () => {
+  ConSourceBox()
+}
+
+let ConDisplayLeft = () => {
+
+}
+
+let ConDisplayRight = () => {
+
+}
+
+let ConDisplayIn = () => {
+
+}
+
+let ConDisplayTop = () => {
+
+}
+//################
+/*
+Function that catches keywors from messages
+  Input: NONE
+  Gets last message from user
+  Stores words separated in buffer list
+  Output: NONE
+*/
+let ConCatchWord = () => {
+
+}
+
+//################
+
+
+
+//Utility Functions
+  /*
+  Function that will search web for keyword
+    Input: String
+    Searches webpage for INPUT word
+    Output: Message into chat and focus on first object found
+  */
+let ConSearchWeb = (keyWord) => {
+
+}
+
+//################
+
+//Respond Proccess
+
+//################
+
+//Startup Process
+
+  //Connect to JSON or SQL if JSON is not presented
+
+    //Check Version of JSON
+
+    //Update JSON
+
+  //################
+  ConDisplay()
+
+//################
