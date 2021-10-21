@@ -24,8 +24,6 @@ The only keyword prevents older browsers that do not support media queries with 
 /*IDs*/
 #IdOuterDivOfCon {
     position: absolute;
-    bottom: 0;
-    right: 1rem;
 
     height: 0;
     width: var(--Con-width);

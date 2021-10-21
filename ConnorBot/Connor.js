@@ -66,14 +66,29 @@ let ConDisplayBottom = () => {
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
   ShowXHideButton.style = "height: 1.5rem; width: 2rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem;"
+
+  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  OuterDivOfCon.style = "bottom: 0; right: 1rem;"
 }
 
 let ConDisplayLeft = () => {
+  ConSourceBox()
 
+  let ShowXHideButton = document.getElementById('IdShowXHideButton')
+  ShowXHideButton.style = "height: 2rem; width: 1.5rem; border-top-right-radius: 1rem; border-bottom-right-radius: 1rem;"
+
+  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  OuterDivOfCon.style = "bottom: 10vh; left: 0;"
 }
 
 let ConDisplayRight = () => {
+  ConSourceBox()
 
+  let ShowXHideButton = document.getElementById('IdShowXHideButton')
+  ShowXHideButton.style = "height: 2rem; width: 1.5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;"
+
+  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  OuterDivOfCon.style = "bottom: 10vh; right: 0;"
 }
 
 let ConDisplayIn = () => {
@@ -81,7 +96,13 @@ let ConDisplayIn = () => {
 }
 
 let ConDisplayTop = () => {
+  ConSourceBox()
 
+  let ShowXHideButton = document.getElementById('IdShowXHideButton')
+  ShowXHideButton.style = "height: 1.5rem; width: 2rem; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;"
+
+  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  OuterDivOfCon.style = "top: 0; right: 1rem;"
 }
 //################
 /*
@@ -112,7 +133,7 @@ let ConSearchWeb = (keyWord) => {
 
 //################
 
-//Respond Proccess
+//Respond Process
 
 //################
 
@@ -125,6 +146,6 @@ let ConSearchWeb = (keyWord) => {
     //Update JSON
 
   //################
-  ConDisplay()
+  ConDisplay('left')
 
 //################
