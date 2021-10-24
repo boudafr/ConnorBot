@@ -65,13 +65,7 @@ let ConDisplayBottom = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  //ShowXHideButton.style = "height: 1.5rem; width: 2rem; border-top-left-radius: 1rem; border-top-right-radius: 1rem;"
-  ShowXHideButton.style.height = "1.5rem"
-  ShowXHideButton.style.width = "2rem"
-  ShowXHideButton.style.borderTopLeftRadius = "1rem"
-  ShowXHideButton.style.borderTopRightRadius = "1rem"
-  ShowXHideButton.style.bottom = "0"
-  ShowXHideButton.style.right = "1rem"
+  ShowXHideButton.className = 'ClShowXHideButtonBottom'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
   //OuterDivOfCon.style = "bottom: 0; right: 1rem;"
@@ -83,13 +77,7 @@ let ConDisplayLeft = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  // ShowXHideButton.style = "height: 2rem; width: 1.5rem; border-top-right-radius: 1rem; border-bottom-right-radius: 1rem;"
-  ShowXHideButton.style.height = "2rem"
-  ShowXHideButton.style.width = "1.5rem"
-  ShowXHideButton.style.borderTopRightRadius = "1rem"
-  ShowXHideButton.style.borderBottomRightRadius = "1rem"
-  ShowXHideButton.style.bottom = "10vh"
-  ShowXHideButton.style.left = "0"
+  ShowXHideButton.className = 'ClShowXHideButtonLeft'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
   // OuterDivOfCon.style = "bottom: 10vh; left: 0;"
@@ -101,13 +89,7 @@ let ConDisplayRight = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  // ShowXHideButton.style = "height: 2rem; width: 1.5rem; border-top-left-radius: 1rem; border-bottom-left-radius: 1rem;"
-  ShowXHideButton.style.height = "2rem"
-  ShowXHideButton.style.width = "1.5rem"
-  ShowXHideButton.style.borderTopLeftRadius = "1rem"
-  ShowXHideButton.style.borderBottomLeftRadius = "1rem"
-  ShowXHideButton.style.bottom = "10vh"
-  ShowXHideButton.style.right = "0"
+  ShowXHideButton.className = 'ClShowXHideButtonRight'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
   // OuterDivOfCon.style = "bottom: 10vh; right: 0;"
@@ -123,13 +105,7 @@ let ConDisplayTop = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  // ShowXHideButton.style = "height: 1.5rem; width: 2rem; border-bottom-left-radius: 1rem; border-bottom-right-radius: 1rem;"
-  ShowXHideButton.style.height = "1.5rem"
-  ShowXHideButton.style.width = "2rem"
-  ShowXHideButton.style.borderBottomLeftRadius = "1rem"
-  ShowXHideButton.style.borderBottomRightRadius = "1rem"
-  ShowXHideButton.style.top = "0"
-  ShowXHideButton.style.right = "1rem"
+  ShowXHideButton.className = 'ClShowXHideButtonTop'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
   // OuterDivOfCon.style = "top: 0; right: 1rem;"
