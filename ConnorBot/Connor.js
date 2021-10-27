@@ -34,6 +34,19 @@ let ConDisplay = (position = 'bottom') => {
 
 
 //sub functions of ConPrint
+  /*Message handlerer
+  Input: String (message from user)
+  this function is critical for function of the bot
+  */
+let fConMessageHandler = (userMessage) => {
+  ConKeyWords.forEach(element => {
+    if (userMessage.contains(element.keyWord)) {
+      //TODO: Implement how to print message from user and bot to ChatBox
+      // + Start working on JSON file
+    }
+  });
+}
+//##################
 //This function hides and shows element in the MainDiv of the bot 
 let fShowXHide = () => {
   const ChangingElem = [
@@ -41,13 +54,13 @@ let fShowXHide = () => {
     TextBox = {el: document.getElementById('IdConTextBox'),aniChange: "AniShowXHideTextBox"},
     ChatBox = {el: document.getElementById('IdConChatBox'),aniChange: "AniShowXHideChatBox"},
   ]
-
+  
   /*LEGACY CODE
   let ConMainDiv = document.getElementById('IdConMainDiv')
   let TextBox = document.getElementById('IdConTextBox')
   let ChatBox = document.getElementById('IdConChatBox')
   */
-
+  
   if (MainDiv.el.style.display === "none") {
     ChangingElem.forEach(element => {
       element.el.style.animation = element.aniChange + " forwards"
@@ -89,6 +102,11 @@ let ConSourceBox = () => {
   //Creation of text box for user
   let TextBox = document.createElement("input")
   TextBox.id = 'IdConTextBox'
+  TextBox.onkeydown = function(e) {
+    if(e.keyCode == 13) {
+      fConMessageHandler(document.getElementById('IdConTextBox').value)
+    }
+  }
   //################
   //Creation of outer most div for ConBot
   let ConMainDiv = document.createElement("div")
@@ -103,10 +121,10 @@ let ConSourceBox = () => {
   ShowXHideButton.addEventListener('click', function() { fShowXHide() }, false)
   document.body.appendChild(ShowXHideButton)
   //################
-  
 }
 
-//Each of next functions prints Connor Bot in respective position --- These functions are called by ConDisplay()
+/*Each of next functions prints Connor Bot in respective position 
+--- These functions are called by ConDisplay()/*
 let ConDisplayBottom = () => {
   ConSourceBox()
 
@@ -151,8 +169,7 @@ let ConDisplayIn = () => {
 
 }
 //################
-/*
-Function that catches keywords from messages
+/*Function that catches keywords from messages
   Input: NONE
   Gets last message from user
   Stores words separated in buffer list
@@ -167,8 +184,7 @@ let ConCatchWord = () => {
 
 
 //Utility Functions
-  /*
-  Function that will search web for keyword
+  /*  Function that will search web for keyword
     Input: String
     Searches webpage for INPUT word
     Output: Message into chat and focus on first object found
