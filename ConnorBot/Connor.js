@@ -34,23 +34,69 @@ let ConDisplay = (position = 'bottom') => {
 
 
 //sub functions of ConPrint
-
+//This function hides and shows element in the MainDiv of the bot 
 let fShowXHide = () => {
-  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
+  const ChangingElem = [
+    MainDiv = {el: document.getElementById('IdConMainDiv'),aniChange: "AniShowXHideDiv"},
+    TextBox = {el: document.getElementById('IdConTextBox'),aniChange: "AniShowXHideTextBox"},
+    ChatBox = {el: document.getElementById('IdConChatBox'),aniChange: "AniShowXHideChatBox"},
+  ]
 
-  OuterDivOfCon.style.animation = "AniShowXHideDiv forwards"
-  OuterDivOfCon.style.display = "inline"
+  /*LEGACY CODE
+  let ConMainDiv = document.getElementById('IdConMainDiv')
+  let TextBox = document.getElementById('IdConTextBox')
+  let ChatBox = document.getElementById('IdConChatBox')
+  */
+
+  if (MainDiv.el.style.display === "none") {
+    ChangingElem.forEach(element => {
+      element.el.style.animation = element.aniChange + " forwards"
+      element.el.style.display = "block"
+    });
+    /*LEGACY CODE
+    ConMainDiv.style.animation = "AniShowXHideDiv forwards"
+    TextBox.style.animation = "AniShowXHideTextBox forwards"
+    ChatBox.style.animation = "AniShowXHideChatBox forwards"
+  
+    ConMainDiv.style.display = "block"
+    TextBox.style.display = "block"
+    ChatBox.style.display = "block"
+    */
+  }
+  else {
+    ChangingElem.forEach(element => {
+      element.el.style.animation = element.aniChange + " reverse"
+      element.el.style.display = "none"
+    });
+    /*LEGACY CODE
+    ConMainDiv.style.animation = "AniShowXHideDiv reverse"
+    TextBox.style.animation = "AniShowXHideTextBox reverse"
+    ChatBox.style.animation = "AniShowXHideChatBox reverse"
+  
+    ConMainDiv.style.display = "none"
+    TextBox.style.display = "none"
+    ChatBox.style.display = "none"
+    */
+  }
 }
 
 //except ConDisplayIn this function is required for all ConDisplay<direction>() because it creates necessary objects
 let ConSourceBox = () => {
-  //Creation of outer most div for ConBot
-  let OuterDivOfCon = document.createElement("div")
-  OuterDivOfCon.id = 'IdOuterDivOfCon'
-  OuterDivOfCon.innerText = 'Test Text'
-  document.body.appendChild(OuterDivOfCon)
+  //Creation of chat box
+  let ChatBox = document.createElement("div")
+  ChatBox.id = 'IdConChatBox'
   //################
-
+  //Creation of text box for user
+  let TextBox = document.createElement("input")
+  TextBox.id = 'IdConTextBox'
+  //################
+  //Creation of outer most div for ConBot
+  let ConMainDiv = document.createElement("div")
+  ConMainDiv.id = 'IdConMainDiv'
+  ConMainDiv.style.display = "none"
+  document.body.appendChild(ConMainDiv).appendChild(ChatBox) //This code looks so ugly that I'll
+  document.body.appendChild(ConMainDiv).appendChild(TextBox) //puke if I ever look at it again
+  //################
   //Creation of button that pops up and hides Conbot
   let ShowXHideButton = document.createElement("button")
   ShowXHideButton.id = 'IdShowXHideButton'
@@ -65,48 +111,44 @@ let ConDisplayBottom = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  ShowXHideButton.className = 'ClShowXHideButtonBottom'
+  ShowXHideButton.className = 'ClConShowXHideButtonBottom'
 
-  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  OuterDivOfCon.style.bottom = "0"
-  OuterDivOfCon.style.right = "1rem"
+  let ConMainDiv = document.getElementById('IdConMainDiv')
+  ConMainDiv.className = "ClConMainDivPosBottom"
 }
 
 let ConDisplayLeft = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  ShowXHideButton.className = 'ClShowXHideButtonLeft'
+  ShowXHideButton.className = 'ClConShowXHideButtonLeft'
 
-  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  OuterDivOfCon.style.bottom = "10vh"
-  OuterDivOfCon.style.left = "0"
+  let ConMainDiv = document.getElementById('IdConMainDiv')
+  ConMainDiv.className = 'ClConMainDivPosLeft'
 }
 
 let ConDisplayRight = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  ShowXHideButton.className = 'ClShowXHideButtonRight'
+  ShowXHideButton.className = 'ClConShowXHideButtonRight'
 
-  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  OuterDivOfCon.style.bottom = "10vh"
-  OuterDivOfCon.style.right = "0"
-}
-
-let ConDisplayIn = () => {
-
+  let ConMainDiv = document.getElementById('IdConMainDiv')
+  ConMainDiv.className = 'ClConMainDivPosRight'
 }
 
 let ConDisplayTop = () => {
   ConSourceBox()
 
   let ShowXHideButton = document.getElementById('IdShowXHideButton')
-  ShowXHideButton.className = 'ClShowXHideButtonTop'
+  ShowXHideButton.className = 'ClConShowXHideButtonTop'
 
-  let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  OuterDivOfCon.style.top = "0"
-  OuterDivOfCon.style.right = "1rem"
+  let ConMainDiv = document.getElementById('IdConMainDiv')
+  ConMainDiv.className = 'ClConMainDivPosTop'
+}
+
+let ConDisplayIn = () => {
+
 }
 //################
 /*
