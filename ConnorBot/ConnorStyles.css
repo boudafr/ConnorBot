@@ -33,6 +33,8 @@ The only keyword prevents older browsers that do not support media queries with 
     display: none;
 }
 
+
+/*ShowXHideButton CSS classes*/
 .ClShowXHideButtonBottom {
     position: absolute;
     bottom: 0;
@@ -80,3 +82,4 @@ The only keyword prevents older browsers that do not support media queries with 
 
     background-color: var(--Con-btn-color);
 }
+/*#####################*/

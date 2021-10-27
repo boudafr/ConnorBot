@@ -68,7 +68,6 @@ let ConDisplayBottom = () => {
   ShowXHideButton.className = 'ClShowXHideButtonBottom'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  //OuterDivOfCon.style = "bottom: 0; right: 1rem;"
   OuterDivOfCon.style.bottom = "0"
   OuterDivOfCon.style.right = "1rem"
 }
@@ -80,7 +79,6 @@ let ConDisplayLeft = () => {
   ShowXHideButton.className = 'ClShowXHideButtonLeft'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  // OuterDivOfCon.style = "bottom: 10vh; left: 0;"
   OuterDivOfCon.style.bottom = "10vh"
   OuterDivOfCon.style.left = "0"
 }
@@ -92,7 +90,6 @@ let ConDisplayRight = () => {
   ShowXHideButton.className = 'ClShowXHideButtonRight'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  // OuterDivOfCon.style = "bottom: 10vh; right: 0;"
   OuterDivOfCon.style.bottom = "10vh"
   OuterDivOfCon.style.right = "0"
 }
@@ -108,7 +105,6 @@ let ConDisplayTop = () => {
   ShowXHideButton.className = 'ClShowXHideButtonTop'
 
   let OuterDivOfCon = document.getElementById('IdOuterDivOfCon')
-  // OuterDivOfCon.style = "top: 0; right: 1rem;"
   OuterDivOfCon.style.top = "0"
   OuterDivOfCon.style.right = "1rem"
 }
