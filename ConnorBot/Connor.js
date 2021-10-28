@@ -1,7 +1,20 @@
-//Mandatory Functions
+//reading JSON file
 
-  /*
-  Function that prints chatbox witch will serve as UI
+//Honestly this is black magic stolen from w3schools
+//But it gets data from ConnorConfig.json therefore it works just fine
+var exportedJSONData
+const xmlhttp = new XMLHttpRequest()
+xmlhttp.onload = function() {
+  const myObj = JSON.parse(this.responseText)
+  console.log(myObj)
+  console.log(myObj[0].name)
+  exportedJSONData = myObj
+}
+xmlhttp.open("GET", "/ConnorBot/ConnorConfig.json")
+xmlhttp.send()
+
+
+  /*  Function that prints chatbox witch will serve as UI
     Input: Two strings
     Positions the chatbox into
     different part of screen
@@ -36,15 +49,15 @@ let ConDisplay = (position = 'bottom') => {
 //sub functions of ConPrint
   /*Message handlerer
   Input: String (message from user)
+  Output: Messages to ChatBox as divs
   this function is critical for function of the bot
   */
 let fConMessageHandler = (userMessage) => {
-  ConKeyWords.forEach(element => {
-    if (userMessage.contains(element.keyWord)) {
-      //TODO: Implement how to print message from user and bot to ChatBox
-      // + Start working on JSON file
-    }
-  });
+  //ConKeyWords.forEach(element => {
+    //if (userMessage.contains(element.keyWord)) {
+      console.log(exportedJSONData[0].name)
+    //}
+  //})
 }
 //##################
 //This function hides and shows element in the MainDiv of the bot 
@@ -55,41 +68,17 @@ let fShowXHide = () => {
     ChatBox = {el: document.getElementById('IdConChatBox'),aniChange: "AniShowXHideChatBox"},
   ]
   
-  /*LEGACY CODE
-  let ConMainDiv = document.getElementById('IdConMainDiv')
-  let TextBox = document.getElementById('IdConTextBox')
-  let ChatBox = document.getElementById('IdConChatBox')
-  */
-  
   if (MainDiv.el.style.display === "none") {
     ChangingElem.forEach(element => {
       element.el.style.animation = element.aniChange + " forwards"
       element.el.style.display = "block"
     });
-    /*LEGACY CODE
-    ConMainDiv.style.animation = "AniShowXHideDiv forwards"
-    TextBox.style.animation = "AniShowXHideTextBox forwards"
-    ChatBox.style.animation = "AniShowXHideChatBox forwards"
-  
-    ConMainDiv.style.display = "block"
-    TextBox.style.display = "block"
-    ChatBox.style.display = "block"
-    */
   }
   else {
     ChangingElem.forEach(element => {
       element.el.style.animation = element.aniChange + " reverse"
       element.el.style.display = "none"
     });
-    /*LEGACY CODE
-    ConMainDiv.style.animation = "AniShowXHideDiv reverse"
-    TextBox.style.animation = "AniShowXHideTextBox reverse"
-    ChatBox.style.animation = "AniShowXHideChatBox reverse"
-  
-    ConMainDiv.style.display = "none"
-    TextBox.style.display = "none"
-    ChatBox.style.display = "none"
-    */
   }
 }
 
@@ -105,6 +94,7 @@ let ConSourceBox = () => {
   TextBox.onkeydown = function(e) {
     if(e.keyCode == 13) {
       fConMessageHandler(document.getElementById('IdConTextBox').value)
+      document.getElementById('IdConTextBox').value = ''
     }
   }
   //################
@@ -124,7 +114,7 @@ let ConSourceBox = () => {
 }
 
 /*Each of next functions prints Connor Bot in respective position 
---- These functions are called by ConDisplay()/*
+--- These functions are called by ConDisplay()*/
 let ConDisplayBottom = () => {
   ConSourceBox()
 
