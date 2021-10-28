@@ -1,1 +1,8 @@
-[{"name":"fanda"}]
+[
+    {"keyWord":"Hey", "response":"Hey! My name is Connor"},
+    {"keyWord":"Kolik", "response":"Hey! My name is Connor"},
+    {"keyWord":"Tady", "response":"Hey! My name is Connor"},
+    {"keyWord":"Cas", "response":"Hey! My name is Connor"},
+    {"keyWord":"LMAO", "response":"Hey! My name is Connor"},
+    {"keyWord":"Test", "response":"Hey! My name is Connor"}
+]

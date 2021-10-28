@@ -7,7 +7,6 @@ const xmlhttp = new XMLHttpRequest()
 xmlhttp.onload = function() {
   const myObj = JSON.parse(this.responseText)
   console.log(myObj)
-  console.log(myObj[0].name)
   exportedJSONData = myObj
 }
 xmlhttp.open("GET", "/ConnorBot/ConnorConfig.json")
@@ -52,12 +51,12 @@ let ConDisplay = (position = 'bottom') => {
   Output: Messages to ChatBox as divs
   this function is critical for function of the bot
   */
-let fConMessageHandler = (userMessage) => {
-  //ConKeyWords.forEach(element => {
-    //if (userMessage.contains(element.keyWord)) {
-      console.log(exportedJSONData[0].name)
-    //}
-  //})
+let fConMessageHandler = (functionInput) => {
+  exportedJSONData.forEach(element => {
+    if (functionInput.includes(element.keyWord)) {
+      console.log(exportedJSONData[0].response) //TODO: Make this console log into printing divs with message instead
+    }
+  })
 }
 //##################
 //This function hides and shows element in the MainDiv of the bot 
