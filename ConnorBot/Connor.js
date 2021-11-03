@@ -52,9 +52,15 @@ let ConDisplay = (position = 'bottom') => {
   this function is critical for function of the bot
   */
 let fConMessageHandler = (functionInput) => {
+  let MainDiv = document.getElementById('IdConMainDiv')
+  let ChatBox = document.getElementById('IdConChatBox')
   exportedJSONData.forEach(element => {
     if (functionInput.includes(element.keyWord)) {
       console.log(exportedJSONData[0].response) //TODO: Make this console log into printing divs with message instead
+      let MessageDiv = document.createElement('div')
+      MessageDiv.className = 'ConMessageDiv'
+      MessageDiv.innerHTML = exportedJSONData[0].response
+      document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
     }
   })
 }
