@@ -54,6 +54,7 @@ let ConDisplay = (position = 'bottom') => {
 let fConMessageHandler = (functionInput) => {
   let MainDiv = document.getElementById('IdConMainDiv')
   let ChatBox = document.getElementById('IdConChatBox')
+  let TextBox = document.getElementById('IdConTextBox')
   exportedJSONData.forEach(element => {
     if (functionInput.includes(element.keyWord)) {
       console.log(exportedJSONData[0].response) //TODO: Make this console log into printing divs with message instead
@@ -61,6 +62,7 @@ let fConMessageHandler = (functionInput) => {
       MessageDiv.className = 'ConMessageDiv'
       MessageDiv.innerHTML = exportedJSONData[0].response
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
+      document.body.appendChild(MainDiv).appendChild(TextBox)
     }
   })
 }
