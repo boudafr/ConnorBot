@@ -37,6 +37,8 @@ The only keyword prevents older browsers that do not support media queries with 
     }
 }
 
+
+
 /*IDs*/
 #IdConTextBox {
     display: none;
@@ -47,6 +49,7 @@ The only keyword prevents older browsers that do not support media queries with 
 
 #IdConChatBox {
     display: none;
+    flex-direction: column;
     height: 0;
     width: 30vw;
     margin-left: auto;
@@ -55,7 +58,7 @@ The only keyword prevents older browsers that do not support media queries with 
 
 #IdConMainDiv {
     display: flex;
-    flex-direction: column;
+    flex-direction: column-reverse;
     
 }
 /*Main Div position classes*/
@@ -97,6 +100,14 @@ The only keyword prevents older browsers that do not support media queries with 
 
 /*#########################*/
 /*ShowXHideButton CSS classes*/
+@keyframes AniShowXHideButtonBottom {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: var(--Con-width);
+    }
+}
 .ClConShowXHideButtonBottom {
     position: absolute;
     bottom: 0;
@@ -104,47 +115,60 @@ The only keyword prevents older browsers that do not support media queries with 
 
     height: 1.5rem; 
     width: 2rem; 
-    border-top-left-radius: 1rem; 
-    border-top-right-radius: 1rem;
 
     background-color: var(--Con-btn-color);
 }
-
+@keyframes AniShowXHideButtonLeft {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: var(--Con-width);
+    }
+}
 .ClConShowXHideButtonLeft {
     position: absolute;
     bottom: 10vh;
     left: 0;
 
-    width: 1.5rem; 
+    width: 2rem; 
     height: 2rem; 
-    border-bottom-right-radius: 1rem; 
-    border-top-right-radius: 1rem;
 
     background-color: var(--Con-btn-color);
 }
-
+@keyframes AniShowXHideButtonRight {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: var(--Con-width);
+    }
+}
 .ClConShowXHideButtonRight {
     position: absolute;
     bottom: 10vh;
     right: 0;
 
-    width: 1.5rem; 
+    width: 2rem; 
     height: 2rem; 
-    border-top-left-radius: 1rem; 
-    border-bottom-left-radius: 1rem;
 
     background-color: var(--Con-btn-color);
 }
-
+@keyframes AniShowXHideButtonTop {
+    0% {
+        Top: 0;
+    }
+    100% {
+        Top: var(--Con-width);
+    }
+}
 .ClConShowXHideButtonTop {
     position: absolute;
     top: 0;
     right: calc(var(--Con-width) / 2);
 
-    height: 1.5rem; 
+    height: 2rem; 
     width: 2rem;
-    border-bottom-left-radius: 1rem; 
-    border-bottom-right-radius: 1rem;
 
     background-color: var(--Con-btn-color);
 }

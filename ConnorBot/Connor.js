@@ -1,5 +1,5 @@
 //reading JSON file
-
+let positioning = "Bottom"
 //Honestly this is black magic stolen from w3schools
 //But it gets data from ConnorConfig.json therefore it works just fine
 var exportedJSONData
@@ -22,24 +22,24 @@ xmlhttp.send()
     is printed on bottom right
     Output: Error messages into console
   */
-let ConDisplay = (position = 'bottom') => {
+let ConDisplay = (position = 'Bottom') => {
   switch (position) {
-    case 'bottom':
+    case 'Bottom':
       ConDisplayBottom()
-      break;
-    case 'right':
+      break
+    case 'Right':
       ConDisplayRight()
-      break;
-    case 'left':
+      break
+    case 'Left':
       ConDisplayLeft()
-      break;
-    case 'in':
+      break
+    case 'In':
       ConDisplayIn()
-      break;
-    case 'top':
+      break
+    case 'Top':
       ConDisplayTop()
-      break;
-    default: ConDisplayBottom();
+      break
+    default: ConDisplayBottom()
   }
 }
 
@@ -54,15 +54,18 @@ let ConDisplay = (position = 'bottom') => {
 let fConMessageHandler = (functionInput) => {
   let MainDiv = document.getElementById('IdConMainDiv')
   let ChatBox = document.getElementById('IdConChatBox')
-  let TextBox = document.getElementById('IdConTextBox')
+  //let TextBox = document.getElementById('IdConTextBox')
   exportedJSONData.forEach(element => {
     if (functionInput.includes(element.keyWord)) {
-      console.log(exportedJSONData[0].response) //TODO: Make this console log into printing divs with message instead
+      console.log(exportedJSONData[0].response) 
       let MessageDiv = document.createElement('div')
       MessageDiv.className = 'ConMessageDiv'
-      MessageDiv.innerHTML = exportedJSONData[0].response
+      MessageDiv.innerHTML = functionInput
+      let ResponseDiv = document.createElement('div')
+      ResponseDiv.className = 'ConResponseDiv'
+      ResponseDiv.innerHTML = exportedJSONData[0].response
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
-      document.body.appendChild(MainDiv).appendChild(TextBox)
+      document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(ResponseDiv)
     }
   })
 }
@@ -73,20 +76,22 @@ let fShowXHide = () => {
     MainDiv = {el: document.getElementById('IdConMainDiv'),aniChange: "AniShowXHideDiv"},
     TextBox = {el: document.getElementById('IdConTextBox'),aniChange: "AniShowXHideTextBox"},
     ChatBox = {el: document.getElementById('IdConChatBox'),aniChange: "AniShowXHideChatBox"},
+    Button = {el: document.getElementById('IdShowXHideButton'),aniChange: "AniShowXHideButton" + positioning},
   ]
   
   if (MainDiv.el.style.display === "none") {
     ChangingElem.forEach(element => {
       element.el.style.animation = element.aniChange + " forwards"
-      element.el.style.display = "block"
-    });
+      element.el.style.display = "flex"
+    })
   }
   else {
     ChangingElem.forEach(element => {
       element.el.style.animation = element.aniChange + " reverse"
       element.el.style.display = "none"
-    });
+    })
   }
+  document.getElementById('IdShowXHideButton').style.display = "block"
 }
 
 //except ConDisplayIn this function is required for all ConDisplay<direction>() because it creates necessary objects
@@ -109,8 +114,8 @@ let ConSourceBox = () => {
   let ConMainDiv = document.createElement("div")
   ConMainDiv.id = 'IdConMainDiv'
   ConMainDiv.style.display = "none"
-  document.body.appendChild(ConMainDiv).appendChild(ChatBox) //This code looks so ugly that I'll
-  document.body.appendChild(ConMainDiv).appendChild(TextBox) //puke if I ever look at it again
+  document.body.appendChild(ConMainDiv).appendChild(TextBox) //This code looks so ugly that I'll
+  document.body.appendChild(ConMainDiv).appendChild(ChatBox) //puke if I ever look at it again
   //################
   //Creation of button that pops up and hides Conbot
   let ShowXHideButton = document.createElement("button")
@@ -205,6 +210,6 @@ let ConSearchWeb = (keyWord) => {
     //Update JSON
 
   //################
-  ConDisplay('bottom')
+  ConDisplay(positioning)
 
 //################
