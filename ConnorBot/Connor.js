@@ -1,5 +1,5 @@
 //reading JSON file
-let positioning = "Bottom"
+let positioning = "Left"
 //Honestly this is black magic stolen from w3schools
 //But it gets data from ConnorConfig.json therefore it works just fine
 var exportedJSONData
@@ -59,10 +59,10 @@ let fConMessageHandler = (functionInput) => {
     if (functionInput.includes(element.keyWord)) {
       console.log(exportedJSONData[0].response) 
       let MessageDiv = document.createElement('div')
-      MessageDiv.className = 'ConMessageDiv'
+      MessageDiv.className = 'ClConMessageDiv'
       MessageDiv.innerHTML = functionInput
       let ResponseDiv = document.createElement('div')
-      ResponseDiv.className = 'ConResponseDiv'
+      ResponseDiv.className = 'ClConResponseDiv'
       ResponseDiv.innerHTML = exportedJSONData[0].response
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(ResponseDiv)
