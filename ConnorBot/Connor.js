@@ -2,16 +2,17 @@
 let positioning = "Left"
 //Honestly this is black magic stolen from w3schools
 //But it gets data from ConnorConfig.json therefore it works just fine
-var exportedJSONData
-const xmlhttp = new XMLHttpRequest()
-xmlhttp.onload = function() {
-  const myObj = JSON.parse(this.responseText)
-  console.log(myObj)
-  exportedJSONData = myObj
-}
-xmlhttp.open("GET", "/ConnorBot/ConnorConfig.json")
-xmlhttp.send()
+let reactions = 
 
+$.ajax({
+  url: "PHP/reactionsConnor.php",
+  type: "post",
+  data: {},
+  dataType: "html",
+  success: (r) => {
+    return r
+  }
+})
 
   /*  Function that prints chatbox witch will serve as UI
     Input: Two strings
