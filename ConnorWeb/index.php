@@ -19,13 +19,14 @@ $prihlaseni->register();
 </head>
 <body>
     <div id="mainGrid">
+        
         <div id="loginDiv">
             <form method="post">
-                <label for="loginName">Username</label>
-                <input type="text" name="loginName" id="loginName" required>
+                <label for="login_name">Username</label>
+                <input type="text" name="login_name" id="login_name" required>
 
-                <label for="loginPassword">Password</label>
-                <input type="text" name="loginPassword" id="loginPassword" required>
+                <label for="login_password">Password</label>
+                <input type="password" name="login_password" id="login_password" required>
 
                 <input type="submit" name="login_submit" value="Login">
             </form>
@@ -33,14 +34,17 @@ $prihlaseni->register();
 
         <div id="registerDiv">
             <form method="post">
-                <label for="registerName">Username</label>
-                <input type="text" name="registerName" id="registerName" required>
+                <label for="register_name">Username</label>
+                <input type="text" name="register_name" id="register_name" required>
 
-                <label for="registerPassword">Password</label>
-                <input type="text" name="registerPassword" id="registerPassword" required>
+                <label for="register_name">Email</label>
+                <input type="text" name="register_email" id="register_email" required>
 
-                <label for="registerPasswordAgain">Password Again</label>
-                <input type="text" name="registerPasswordAgain" id="registerPasswordAgain" required>
+                <label for="register_password">Password</label>
+                <input type="password" name="register_password" id="register_password" required>
+
+                <label for="register_password_again">Password Again</label>
+                <input type="password" name="register_password_again" id="register_password_again" required>
 
                 <input type="submit" name="register_submit" value="Register">
             </form>

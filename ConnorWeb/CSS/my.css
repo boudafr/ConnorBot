@@ -11,6 +11,8 @@ body {
 
     display: grid;
     grid-template-areas:
+      'log reg'
+      'log reg'
       'log reg';
     grid-gap: 10px;
     background-color: #2196F3;
@@ -34,4 +36,15 @@ body {
 
 #mainGrid div form input{
     font-size: 2rem;
+}
+
+#message_box {
+    position: absolute;
+    top: 100;
+    width: 100vw;
+    min-height: 2rem;
+    font-size: 1rem;
+    text-align: center;
+    padding: auto;
+    background-color: #f89595;
 }
