@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connor</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="JS/main.js"></script>
+    <link rel="stylesheet" href="CSS/setup.css">
 
 </head>
+
 <body onload="onLoad()">
     <div id="nav">
 
@@ -16,34 +21,52 @@
     <div id="main-content">
         <span id="setup-contents">
             <form method="post">
-                <label for="ConBotName">Bot name</label>
-                <input type="text" name="ConBotName" id="ConBotNameCreate">
-                <button type="submit" id="CreateBotSubmit">Create bot</button>
+                <label for="bot_name_create_input">Bot name</label>
+                <input type="text" name="bot_name_create_input" id="bot_name_create_input">
+
+                <label for="main_color_input">Main Colour</label>
+                <input type="color" name="main_color_input" id="main_color_input">
+
+                <label for="secondary_color_input">Secondary Colour</label>
+                <input type="color" name="secondary_color_input" id="secondary_color_input">
+
+                <label for="position_input"></label>
+                <select name="position_input" id="position_input">
+                    <option value="bottom">bottom</option>
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="top">top</option>
+                </select>
+                <button type="submit" id="create_bot_submit">Add/Edit Bot</button>
             </form>
             <form method="post">
-                <label for="ConBotName">Bot Name</label>
-                <select name="ConBotName" id="ConBotName">
-                    
-                </select>
-                    
+                <label for="bot_name_input">Bot Name</label>
+                <select name="bot_name_input" id="bot_name_input">
 
-                <label for="ConKeyword">Select/Add Keyword</label>
-                <input list="KeywordsList" name="ConKeyword" id="ConKeyword">
-                <datalist id="KeywordsList">
-                    
+                </select>
+
+
+                <label for="keyword_input">Edit/Add Keyword</label>
+                <input list="keywords_list" name="keyword_input" id="keyword_input">
+                <datalist id="keywords_list">
+
                 </datalist>
 
-                <label for="ConResponse">Response</label>
-                <input type="textarea" id="ConResponse">
+                <label for="response_input">Response</label>
+                <input type="textarea" id="response_input">
 
-                <button type="submit" id="btn-submit">Add Response</button>
+                <label for="options_input">Include options:</label>
+                <input type="checkbox" name="options_input" id="options_input">
+
+                <button type="submit" id="add_edit_keyword">Add Response</button>
             </form>
-            <button  id="Add_Edit_Keyword">Add Response</button>
+
 
         </span>
         <span id="setup-selection">
-            
+
         </span>
     </div>
 </body>
+
 </html>

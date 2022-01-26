@@ -1,18 +1,18 @@
 let onLoad = () => {
     getBotNames()
 
-    let createBotButton = document.getElementById('CreateBotSubmit')
+    let createBotButton = document.getElementById('create_bot_submit')
     createBotButton.addEventListener('click', () => {
         createBot()
         getBotNames()
     })
 
-    let BotSelection = document.getElementById('ConBotName')
+    let BotSelection = document.getElementById('bot_name_input')
     BotSelection.addEventListener('change', () => {
         getKeywords()
     })
 
-    let Add_Edit_Keyword = document.getElementById('Add_Edit_Keyword')
+    let Add_Edit_Keyword = document.getElementById('add_edit_keyword')
     Add_Edit_Keyword.addEventListener('click', () => {
         createKeyword()
     })
@@ -26,7 +26,7 @@ let getBotNames = () => {
         data: {},
         dataType: "html",
         success: (r) => {
-            document.getElementById('ConBotName').innerHTML = r
+            document.getElementById('bot_name_input').innerHTML = r
         }
     })
 }
@@ -36,7 +36,10 @@ let createBot = () => {
         url: "PHP/addBot.php",
         type: "post",
         data: {
-            botName: document.getElementById('ConBotNameCreate').value
+            botName: document.getElementById('bot_name_create_input').value,
+            mainColor: document.getElementById('main_color_input').value,
+            secColor: document.getElementById('secondary_color_input').value,
+            position: document.getElementById('position_input').value,
         },
         success: () => {
             console.log('Bot Created')
@@ -49,27 +52,22 @@ let getKeywords = () => {
         url: "PHP/getKeywords.php",
         type: "post",
         data: {
-            BotID: document.getElementById('ConBotName').value,
+            BotID: document.getElementById('bot_name_input').value,
         },
         success: (r) => {
-            document.getElementById('KeywordsList').innerHTML = r
+            document.getElementById('keywords_list').innerHTML = r
         }
     })
 }
 
 let createKeyword = () => {
-    /*
-    console.log(document.getElementById('ConKeyword').value)
-    console.log(document.getElementById('ConResponse').value)
-    console.log(document.getElementById('ConBotName').value)
-    */
     $.ajax({
-        url: "PHP/addResponse.php",
+        url: "PHP/addKeyword.php",
         type: "post",
         data: {
-            ConKeyword: document.getElementById('ConKeyword').value,
-            ConResponse: document.getElementById('ConResponse').value,
-            ConBotID: document.getElementById('ConBotName').value,
+            ConKeyword: document.getElementById('keyword_input').value,
+            ConResponse: document.getElementById('response_input').value,
+            ConBotID: document.getElementById('bot_name_input').value,
         },
         success: () => {
             console.log('Response Created')

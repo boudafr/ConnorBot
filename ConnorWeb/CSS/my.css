@@ -14,7 +14,7 @@ body {
       'log reg'
       'log reg'
       'log reg';
-    grid-gap: 10px;
+    gap: 10px;
     background-color: #2196F3;
 }
 
