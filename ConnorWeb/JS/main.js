@@ -113,18 +113,15 @@ let createKeyword = () => {
 }
 
 let editKeyword = () => {
-    /*$.ajax({
+    $.ajax({
         url: "PHP/editKeyword.php",
         type: "post",
         data: {
             keywordID: document.getElementById('edit_keyword').value,
-            response: document.getElementById('edit_response').innerHTML,
+            response: document.getElementById('edit_response').value,
         },
         success: () => {
             getResponse()
         }
-    })*/
-
-    alert(document.getElementById('edit_keyword').value)
-    alert(document.getElementById('edit_response').innerHTML)
+    })
 }
