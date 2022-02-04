@@ -62,7 +62,7 @@ class login_class {
                         $hash = password_hash($_POST['register_password'], PASSWORD_DEFAULT);
                         $stmt->execute([$_POST['register_name'], $hash, $_POST['register_email']]);
 
-                        $errMessage = "Account created";
+                        echo('<div id="message_box" class="bg_green">Account created</div>');
                     }
                     else {
                         $errMessage = "Email is already taken";
@@ -81,7 +81,7 @@ class login_class {
 
     public function message($input) {
         if ($input !== "") {
-        echo('<div id="message_box">' . $input . '</div>');
+        echo('<div id="message_box" class="bg_red">' . $input . '</div>');
         }
     }
 

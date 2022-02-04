@@ -1,5 +1,8 @@
 let onLoad = () => {
-    getBotNames()
+    let change_response = document.getElementById('edit_keyword')
+    change_response.addEventListener('change', () => {
+        getResponse()
+    })
 
     let createBotButton = document.getElementById('create_bot_submit')
     createBotButton.addEventListener('click', () => {
@@ -12,12 +15,19 @@ let onLoad = () => {
         getKeywords()
     })
 
-    let Add_Edit_Keyword = document.getElementById('add_edit_keyword')
-    Add_Edit_Keyword.addEventListener('click', () => {
+    let Add_Keyword = document.getElementById('add_keyword')
+    Add_Keyword.addEventListener('click', () => {
+        console.log('test1')
         createKeyword()
     })
-}
 
+    let edit_keyword = document.getElementById('edit_keyword_submit')
+    edit_keyword.addEventListener('click', () => {
+        editKeyword()
+    })
+
+    getBotNames()
+}
 
 let getBotNames = () => {
     $.ajax({
@@ -27,6 +37,36 @@ let getBotNames = () => {
         dataType: "html",
         success: (r) => {
             document.getElementById('bot_name_input').innerHTML = r
+            getKeywords()
+        }
+    })
+}
+
+let getKeywords = () => {
+    $.ajax({
+        url: "PHP/getKeywords.php",
+        type: "post",
+        data: {
+            BotID: document.getElementById('bot_name_input').value,
+        },
+        dataType: "html",
+        success: (r) => {
+            document.getElementById('edit_keyword').innerHTML = r
+            getResponse()
+        }
+    })
+}
+
+let getResponse = () => {
+    $.ajax({
+        url: "PHP/getResponse.php",
+        type: "post",
+        data: {
+            keywordID: document.getElementById('edit_keyword').value,
+        },
+        dataType: "html",
+        success: (r) => {
+            document.getElementById('edit_response').innerHTML = r
         }
     })
 }
@@ -47,30 +87,44 @@ let createBot = () => {
     })
 }
 
-let getKeywords = () => {
-    $.ajax({
-        url: "PHP/getKeywords.php",
-        type: "post",
-        data: {
-            BotID: document.getElementById('bot_name_input').value,
-        },
-        success: (r) => {
-            document.getElementById('keywords_list').innerHTML = r
-        }
-    })
-}
-
 let createKeyword = () => {
+    let def = 0
+    let res = 0
+    if (document.getElementById('default_input').value) {
+        def = 1
+    }
+    if (document.getElementById('options_input').value) {
+        res = 1
+    }
     $.ajax({
         url: "PHP/addKeyword.php",
         type: "post",
         data: {
-            ConKeyword: document.getElementById('keyword_input').value,
-            ConResponse: document.getElementById('response_input').value,
-            ConBotID: document.getElementById('bot_name_input').value,
+            keyword: document.getElementById('keyword_input').value,
+            response: document.getElementById('response_input').value,
+            default: def,
+            responses: res,
+            botID: document.getElementById('bot_name_input').value,
         },
-        success: () => {
-            console.log('Response Created')
+        success: (r) => {
+            console.log(r)
         }
     })
+}
+
+let editKeyword = () => {
+    /*$.ajax({
+        url: "PHP/editKeyword.php",
+        type: "post",
+        data: {
+            keywordID: document.getElementById('edit_keyword').value,
+            response: document.getElementById('edit_response').innerHTML,
+        },
+        success: () => {
+            getResponse()
+        }
+    })*/
+
+    alert(document.getElementById('edit_keyword').value)
+    alert(document.getElementById('edit_response').innerHTML)
 }
