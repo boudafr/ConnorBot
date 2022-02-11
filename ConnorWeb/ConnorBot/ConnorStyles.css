@@ -15,7 +15,7 @@ The only keyword prevents older browsers that do not support media queries with 
 
 
 
-/*Main Div Insides*/
+/*Main Div insides*/
 @keyframes AniShowXHideTextBox {
     0% {
         height: 0;
@@ -68,7 +68,7 @@ The only keyword prevents older browsers that do not support media queries with 
     
 }
 
-.ClConMainDivPosBottom {
+.ClConMainDivPosbottom {
     position: absolute;
 
     background-color: var(--Con-bg-color);
@@ -77,7 +77,7 @@ The only keyword prevents older browsers that do not support media queries with 
     right: 1rem;
 }
 
-.ClConMainDivPosTop {
+.ClConMainDivPostop {
     position: absolute;
 
     background-color: var(--Con-bg-color);
@@ -86,7 +86,7 @@ The only keyword prevents older browsers that do not support media queries with 
     right: 1rem;
 }
 
-.ClConMainDivPosRight {
+.ClConMainDivPosright {
     position: absolute;
 
     background-color: var(--Con-bg-color);
@@ -95,7 +95,7 @@ The only keyword prevents older browsers that do not support media queries with 
     right: 0;
 }
 
-.ClConMainDivPosLeft {
+.ClConMainDivPosleft {
     position: absolute;
 
     background-color: var(--Con-bg-color);
@@ -105,7 +105,7 @@ The only keyword prevents older browsers that do not support media queries with 
 }
 /*#########################*/
 /*ShowXHideButton CSS*/
-@keyframes AniShowXHideButtonBottom {
+@keyframes AniShowXHideButtonbottom {
     0% {
         bottom: 0;
     }
@@ -113,7 +113,7 @@ The only keyword prevents older browsers that do not support media queries with 
         bottom: var(--Con-width);
     }
 }
-.ClConShowXHideButtonBottom {
+.ClConShowXHideButtonbottom {
     position: absolute;
     bottom: 0;
     right: calc(var(--Con-width) / 2);
@@ -123,7 +123,7 @@ The only keyword prevents older browsers that do not support media queries with 
 
     background-color: var(--Con-btn-color);
 }
-@keyframes AniShowXHideButtonLeft {
+@keyframes AniShowXHideButtonleft {
     0% {
         left: 0;
     }
@@ -131,7 +131,7 @@ The only keyword prevents older browsers that do not support media queries with 
         left: var(--Con-width);
     }
 }
-.ClConShowXHideButtonLeft {
+.ClConShowXHideButtonleft {
     position: absolute;
     bottom: 10vh;
     left: 0;
@@ -141,7 +141,7 @@ The only keyword prevents older browsers that do not support media queries with 
 
     background-color: var(--Con-btn-color);
 }
-@keyframes AniShowXHideButtonRight {
+@keyframes AniShowXHideButtonright {
     0% {
         right: 0;
     }
@@ -149,7 +149,7 @@ The only keyword prevents older browsers that do not support media queries with 
         right: var(--Con-width);
     }
 }
-.ClConShowXHideButtonRight {
+.ClConShowXHideButtonright {
     position: absolute;
     bottom: 10vh;
     right: 0;
@@ -159,15 +159,15 @@ The only keyword prevents older browsers that do not support media queries with 
 
     background-color: var(--Con-btn-color);
 }
-@keyframes AniShowXHideButtonTop {
+@keyframes AniShowXHideButtontop {
     0% {
-        Top: 0;
+        top: 0;
     }
     100% {
-        Top: var(--Con-width);
+        top: var(--Con-width);
     }
 }
-.ClConShowXHideButtonTop {
+.ClConShowXHideButtontop {
     position: absolute;
     top: 0;
     right: calc(var(--Con-width) / 2);

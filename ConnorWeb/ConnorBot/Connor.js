@@ -1,7 +1,9 @@
 //reading JSON file
 //Honestly this is black magic stolen from w3schools
 //But it gets data from ConnorConfig.json therefore it works just fine
-let keywords
+let keywords = {}
+let position, mainColor, secColor
+
 
   
 $.ajax({
@@ -13,10 +15,24 @@ $.ajax({
   dataType: "json",
   success: (r) => {
     keywords = r
-    alert(keywords)
+    console.log(keywords)
   }
 })
 
+$.ajax({
+  url: "PHPout/getBotInfo.php",
+  type: "post",
+  data: {
+    botName: "TestBot",
+  },
+  dataType: "json",
+  success: (r) => {
+    position = r['position']
+    mainColor = r['main_color']
+    secColor = r['secondary_color']
+    console.log(position)
+  }
+})
 
 
   /*  Function that prints chatbox witch will serve as UI
@@ -28,21 +44,21 @@ $.ajax({
     is printed on bottom right
     Output: Error messages into console
   */
-let ConDisplay = (position = 'Bottom') => {
+let ConDisplay = (/*position = 'Bottom'*/) => {
   switch (position) {
-    case 'Bottom':
+    case 'bottom':
       ConDisplayBottom()
       break
-    case 'Right':
+    case 'right':
       ConDisplayRight()
       break
-    case 'Left':
+    case 'left':
       ConDisplayLeft()
       break
-    case 'In':
+    case 'in':
       ConDisplayIn()
       break
-    case 'Top':
+    case 'top':
       ConDisplayTop()
       break
     default: ConDisplayBottom()
@@ -61,15 +77,15 @@ let fConMessageHandler = (functionInput) => {
   let MainDiv = document.getElementById('IdConMainDiv')
   let ChatBox = document.getElementById('IdConChatBox')
   //let TextBox = document.getElementById('IdConTextBox')
-  exportedJSONData.forEach(element => {
-    if (functionInput.includes(element.keyWord)) {
-      console.log(exportedJSONData[0].response) 
+  keywords.forEach(element => {
+    if (functionInput.includes(element)) {
+      console.log(element) 
       let MessageDiv = document.createElement('div')
       MessageDiv.className = 'ClConMessageDiv'
       MessageDiv.innerHTML = functionInput
       let ResponseDiv = document.createElement('div')
       ResponseDiv.className = 'ClConResponseDiv'
-      ResponseDiv.innerHTML = exportedJSONData[0].response
+      ResponseDiv.innerHTML = 'temp message'
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(ResponseDiv)
     }
@@ -82,7 +98,7 @@ let fShowXHide = () => {
     MainDiv = {el: document.getElementById('IdConMainDiv'),aniChange: "AniShowXHideDiv"},
     TextBox = {el: document.getElementById('IdConTextBox'),aniChange: "AniShowXHideTextBox"},
     ChatBox = {el: document.getElementById('IdConChatBox'),aniChange: "AniShowXHideChatBox"},
-    Button = {el: document.getElementById('IdShowXHideButton'),aniChange: "AniShowXHideButton" + positioning},
+    Button = {el: document.getElementById('IdShowXHideButton'),aniChange: "AniShowXHideButton" + position},
   ]
   
   if (MainDiv.el.style.display === "none") {
@@ -216,6 +232,6 @@ let ConSearchWeb = (keyWord) => {
     //Update JSON
 
   //################
-  ConDisplay("bottom")
+  ConDisplay(position)
 
 //################

@@ -4,17 +4,17 @@ include_once('../PHP/config.php');
 
 $sql = "SELECT ID FROM `bots` WHERE `name` = ?";
 $stmt = $conn->prepare($sql);
-$stmt = execute([$_POST['botName']]);
+$stmt->execute([$_POST['botName']]);
+$BotID = $stmt->fetch();
 
-$sql = "SELECT ID, keyword FROM `commands` WHERE `bots_ID` = ?";
-$stmt2 = $conn->prepare($sql);
-$stmt2 = execute([$stmt]);
+$sql2 = "SELECT keyword FROM `commands` WHERE `bots_ID` = ?";
+$stmt2 = $conn->prepare($sql2);
+$stmt2->execute([$BotID['ID']]);
 
-$result = ['ID' => 0, 'keyword' => 'test'];
+$result = [];
 
-while($row = $stmt->fetch()){ 
-    $tmp = [$row['ID'], $row['keyword']]
-    $result = array_push($result, $tmp);
+while($row = $stmt2->fetch()) {
+    array_push($result, $row['keyword']);
 }
 
 echo(json_encode($result));
