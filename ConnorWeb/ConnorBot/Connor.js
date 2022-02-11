@@ -2,20 +2,20 @@
 //Honestly this is black magic stolen from w3schools
 //But it gets data from ConnorConfig.json therefore it works just fine
 let keywords
-let initBot = (botName) => {
+
   
-  $.ajax({
-    url: "127.0.0.1/ConnorWeb/PHPout/getResponses.php",
-    type: "post",
-    data: {
-      botName: botName,
-    },
-    dataType: "html",
-    success: (r) => {
-      keywords = r
-    }
-  })
-}
+$.ajax({
+  url: "PHPout/getResponses.php",
+  type: "post",
+  data: {
+    botName: "TestBot",
+  },
+  dataType: "json",
+  success: (r) => {
+    keywords = r
+    alert(keywords)
+  }
+})
 
 
 
@@ -216,6 +216,6 @@ let ConSearchWeb = (keyWord) => {
     //Update JSON
 
   //################
-  ConDisplay(positioning)
+  ConDisplay("bottom")
 
 //################

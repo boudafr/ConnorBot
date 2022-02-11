@@ -10,10 +10,11 @@ $sql = "SELECT ID, keyword FROM `commands` WHERE `bots_ID` = ?";
 $stmt2 = $conn->prepare($sql);
 $stmt2 = execute([$stmt]);
 
-
+$result = ['ID' => 0, 'keyword' => 'test'];
 
 while($row = $stmt->fetch()){ 
-    $result .= array($row['ID'], $row['keyword']);
+    $tmp = [$row['ID'], $row['keyword']]
+    $result = array_push($result, $tmp);
 }
 
-echo($result);
+echo(json_encode($result));
