@@ -7,7 +7,7 @@ let position, mainColor, secColor
 
   
 $.ajax({
-  url: "PHPout/getResponses.php",
+  url: "PHPout/getKeywords.php",
   type: "post",
   data: {
     botName: "TestBot",
@@ -74,12 +74,31 @@ let ConDisplay = (/*position = 'Bottom'*/) => {
   this function is critical for function of the bot
   */
 let fConMessageHandler = (functionInput) => {
-  let MainDiv = document.getElementById('IdConMainDiv')
-  let ChatBox = document.getElementById('IdConChatBox')
+  //let MainDiv = document.getElementById('IdConMainDiv')
+  //let ChatBox = document.getElementById('IdConChatBox')
   //let TextBox = document.getElementById('IdConTextBox')
   keywords.forEach(element => {
     if (functionInput.includes(element)) {
       console.log(element) 
+
+      let userMessage = document.createElement('div')
+      userMessage.className = 'ClConMessageDiv'
+      MessageDiv.innerHTML = functionInput
+      document.getElementById('IdConChatBox').appendChild(userMessage)
+
+      $.ajax({
+        url: "PHPout/getResponse.php",
+        type: "post",
+        data: {
+          keyword: element,
+          botName: "TestBot",
+        },
+        dataType: "html",
+        success: (r) => {
+          document.getElementById('IdConChatBox').appendChild(r)
+        }
+      })
+      /*
       let MessageDiv = document.createElement('div')
       MessageDiv.className = 'ClConMessageDiv'
       MessageDiv.innerHTML = functionInput
@@ -88,6 +107,7 @@ let fConMessageHandler = (functionInput) => {
       ResponseDiv.innerHTML = 'temp message'
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(MessageDiv)
       document.body.appendChild(MainDiv).appendChild(ChatBox).appendChild(ResponseDiv)
+      */
     }
   })
 }
