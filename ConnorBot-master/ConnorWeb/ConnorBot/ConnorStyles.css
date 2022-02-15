@@ -1,0 +1,180 @@
+/* 
+The only keyword prevents older browsers that do not support media queries with media features from applying the given styles. It has no effect on modern browsers. https://stackoverflow.com/questions/42025632/how-to-detect-only-with-css-mobile-screens
+*/
+@media only screen and (hover: none) and (pointer: coarse) {
+
+}
+/**/
+:root {
+    --Con-bg-color: yellow;
+    --Con-btn-color: green;
+    --Con-width: 33vw;
+}
+/*Animantions*/
+
+
+
+
+/*Main Div insides*/
+@keyframes AniShowXHideTextBox {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: 1.5em;
+    }
+}
+#IdConTextBox {
+    display: none;
+    height: 0;
+    width: 33vw;
+    align-self: flex-end;
+}
+@keyframes AniShowXHideChatBox {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: calc(var(--Con-width) - 2em);
+    }
+}
+#IdConChatBox {
+    display: none;
+    flex-direction: column;
+    height: 0;
+    width: 30vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+/*#########################*/
+/*ChatBox insides*/
+.ClConMessageDiv {
+    margin-left: auto;
+    max-width: 25vw;
+}
+/*#########################*/
+/*Main Div CSS*/
+@keyframes AniShowXHideDiv {
+    0% {
+        height: 0;
+    }
+    100% {
+        height: var(--Con-width);
+    }
+}
+#IdConMainDiv {
+    display: flex;
+    flex-direction: column-reverse;
+    
+}
+
+.ClConMainDivPosbottom {
+    position: absolute;
+
+    background-color: var(--Con-bg-color);
+
+    bottom: 0;
+    right: 1rem;
+}
+
+.ClConMainDivPostop {
+    position: absolute;
+
+    background-color: var(--Con-bg-color);
+
+    top: 0;
+    right: 1rem;
+}
+
+.ClConMainDivPosright {
+    position: absolute;
+
+    background-color: var(--Con-bg-color);
+
+    bottom: 10vh;
+    right: 0;
+}
+
+.ClConMainDivPosleft {
+    position: absolute;
+
+    background-color: var(--Con-bg-color);
+
+    bottom: 10vh;
+    left: 0;
+}
+/*#########################*/
+/*ShowXHideButton CSS*/
+@keyframes AniShowXHideButtonbottom {
+    0% {
+        bottom: 0;
+    }
+    100% {
+        bottom: var(--Con-width);
+    }
+}
+.ClConShowXHideButtonbottom {
+    position: absolute;
+    bottom: 0;
+    right: calc(var(--Con-width) / 2);
+
+    height: 1.5rem; 
+    width: 2rem; 
+
+    background-color: var(--Con-btn-color);
+}
+@keyframes AniShowXHideButtonleft {
+    0% {
+        left: 0;
+    }
+    100% {
+        left: var(--Con-width);
+    }
+}
+.ClConShowXHideButtonleft {
+    position: absolute;
+    bottom: 10vh;
+    left: 0;
+
+    width: 2rem; 
+    height: 2rem; 
+
+    background-color: var(--Con-btn-color);
+}
+@keyframes AniShowXHideButtonright {
+    0% {
+        right: 0;
+    }
+    100% {
+        right: var(--Con-width);
+    }
+}
+.ClConShowXHideButtonright {
+    position: absolute;
+    bottom: 10vh;
+    right: 0;
+
+    width: 2rem; 
+    height: 2rem; 
+
+    background-color: var(--Con-btn-color);
+}
+@keyframes AniShowXHideButtontop {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: var(--Con-width);
+    }
+}
+.ClConShowXHideButtontop {
+    position: absolute;
+    top: 0;
+    right: calc(var(--Con-width) / 2);
+
+    height: 2rem; 
+    width: 2rem;
+
+    background-color: var(--Con-btn-color);
+}
+/*#####################*/
