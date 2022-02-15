@@ -11,6 +11,9 @@
             ? ConClUserMessage : Div pro zprávy uživatele
             ? ConClBotMessage : Div pro zprávy bota
         Role: tobrazuje zprávy uživatele i bota
+    CloseBTN
+        ? ID: ConIdCloseBTN
+        Role: Schová Bota a zobrazí DisplayBTN
     Form
         ? ID: ConIdForm
         Role: pro využití submit a post pro funkci bota
@@ -31,6 +34,7 @@ let StartBot = (botname = 'TestBot') => {
     GetKeywords(botname)
     DisplayBot()
     InitMessageHandler(botname)
+    InitDisplayBTN()
 }
 //_____________________Listeners____________________\\
 
@@ -44,6 +48,8 @@ let InitDisplayBTN = () => {
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
     DisplayBTN.addEventListener('click', () => {ShowBot()})
 }
+
+
 
 
 //__________________________________________________\\
@@ -104,30 +110,36 @@ let MessageHandler = (botname, keyword) => {
 //_________________Vytváření prvků___________________\\
 
 let DisplayBot = () => {
+    //Vnější prvek vlasnící všechny prvky až na DisplayBTN
     let BotBox = document.createElement('div')
     BotBox.id = 'ConIdBotBox'
-
+    //Zobrazuje zprávy uživatele a bota
     let MessageBox = document.createElement('div')
     MessageBox.id = 'ConIdMessageBox'
     MessageBox.className = 'ConCl' + position
-
+    //Form pro posílání uživatelských zpráv
     let Form = document.createElement('form')
     Form.id = 'ConIdForm'
-
+    //Tlačítko na schování bota
+    let CloseBTN = document.createElement('button')
+    CloseBTN.id = 'ConIdCloseBTN'
+    //tlažítko na odeslání zprávy
     let SubBTN = document.createElement('input')
     SubBTN.type = 'button'
-
+    //text box pro napsání zprávy botovvi (user input)
     let InputBox = document.createElement('input')
     InputBox.type = 'text'
     InputBox.id = 'ConIdInputBox'
-
-    let DisplayBTN = document.createElement('button')
+    //tlačítko na zobrazení bota
+    let DisplayBTN = document.createElement('input')
+    DisplayBTN.type = 'button'
     DisplayBTN.id = 'ConIdDisplayBTN'
     DisplayBTN.className = 'ConCl' + position
 
     Form.appendChild(InputBox)
-    Form.appendChild(InputBox)
+    Form.appendChild(SubBTN)
 
+    BotBox.appendChild(CloseBTN)
     BotBox.appendChild(MessageBox)
     BotBox.appendChild(From)
 
