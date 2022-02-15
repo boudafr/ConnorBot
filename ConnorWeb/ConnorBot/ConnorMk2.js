@@ -32,6 +32,22 @@ let StartBot = (botname = 'TestBot') => {
     DisplayBot()
     InitMessageHandler(botname)
 }
+//_____________________Listeners____________________\\
+
+
+let InitMessageHandler = (botname) => {
+    let InputBox = document.getElementById('ConIdInputBox')
+    InputBox.addEventListener('submit', () => {OnMessageSend(botname)})
+}
+
+let InitDisplayBTN = () => {
+    let DisplayBTN = document.getElementById('ConIdDisplayBTN')
+    DisplayBTN.addEventListener('click', () => {ShowBot()})
+}
+
+
+//__________________________________________________\\
+
 
 //_______________________AJAX_______________________\\
 
@@ -52,7 +68,7 @@ let GetKeywords = () => {
 
 let GetBotInfo = (botname) => {
     $.ajax({
-        url: "PHPout/getBotInfo.php",
+        url: "http://127.0.0.1/ConnorWeb/PHPout/getBotInfo.php",
         type: "post",
         data: {
           botName: botname,
@@ -122,10 +138,7 @@ let DisplayBot = () => {
 //___________________________________________________\\
 
 //__________________Message Handlers_________________\\
-let InitMessageHandler = (botname) => {
-    let InputBox = document.getElementById('ConIdInputBox')
-    InputBox.addEventListener('submit', () => {OnMessageSend(botname)})
-}
+
 
 
 let OnMessageSend = (botname) => {
@@ -165,5 +178,35 @@ let AttendMessage = (elementWithMessage) => {
 }
 
 //___________________________________________________\\
+
+//_____________________CSS Change____________________\\
+
+
+
+let ShowBot = () => {
+    let ChatBot = document.getElementById('ConIdBotBox')
+    ShowElement(ChatBot)
+
+    let DisplayBTN = document.getElementById('ConIdDisplayBTN')
+    HideElement(DisplayBTN)
+}
+
+let HideBot = () => {
+    let ChatBot = document.getElementById('ConIdBotBox')
+    HideElement(ChatBot)
+
+    let DisplayBTN = document.getElementById('ConIdDisplayBTN')
+    ShowElement(DisplayBTN)
+} 
+
+let ShowElement = (element) => {
+    element.style.display = 'block'
+}
+
+let HideElement = (element) => {
+    element.style.display = 'none'
+}
+//___________________________________________________\\
+
 
 StartBot()
