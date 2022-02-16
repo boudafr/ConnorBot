@@ -1,0 +1,67 @@
+:root {
+    --ConMainCol: #AAAAff;
+    --ConSecCol: #222255;
+}
+
+/*_____________________BotBox______________________*/
+
+/*      1     2  
+________________
+|____________|X|1
+|              |
+|              |
+|     Chat     |2
+|              |
+|______________|
+|Message...__|>|3
+
+*/
+#ConIdCloseBTN {grid-area: close;}
+#ConIdMessageBox {grid-area:  chat;}
+#ConIdForm {grid-area: form;}
+
+#ConIdBotBox {
+    display: grid;
+    grid-template-areas: 
+    'empty close'
+    'chat chat'
+    'form form';
+    grid-template-columns: auto 2rem;
+    grid-template-rows: 2rem auto 2rem;
+    position: absolute;
+
+    min-width: 10rem;
+    min-height: 20rem;
+
+    max-width: 20vw;
+    max-height: 30vw;
+
+    background-color: var(--ConMainCol);
+}
+
+#ConIdForm {
+    display: grid;
+    grid-template-columns: auto 2rem;
+}
+
+/*_________________Position Classes__________________*/
+
+.ConClbottom {
+    bottom: 0;
+    right: 5vw;
+}
+
+.ConCltop {
+    top: 0;
+    right: 5vw;
+}
+
+.ConClright {
+    right: 0;
+    bottom: 5vw;
+}
+
+.ConClleft {
+    left: 0;
+    bottom: 5vw;
+}

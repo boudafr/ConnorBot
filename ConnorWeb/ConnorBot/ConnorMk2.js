@@ -49,7 +49,10 @@ let InitDisplayBTN = () => {
     DisplayBTN.addEventListener('click', () => {ShowBot()})
 }
 
-
+let InitCloseBTN = () => {
+    let CloseBTN = document.getElementById('ConIdCloseBTN')
+    CloseBTN = document.addEventListener('click', () => {HideBot()})
+}
 
 
 //__________________________________________________\\
@@ -197,26 +200,30 @@ let AttendMessage = (elementWithMessage) => {
 
 let ShowBot = () => {
     let ChatBot = document.getElementById('ConIdBotBox')
-    ShowElement(ChatBot)
+    DisplayGrid(ChatBot)
 
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
-    HideElement(DisplayBTN)
+    DisplayNone(DisplayBTN)
 }
 
 let HideBot = () => {
     let ChatBot = document.getElementById('ConIdBotBox')
-    HideElement(ChatBot)
+    DisplayNone(ChatBot)
 
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
-    ShowElement(DisplayBTN)
+    DisplayBlock(DisplayBTN)
 } 
 
-let ShowElement = (element) => {
-    element.style.display = 'block'
+let DisplayGrid = (element) => {
+    element.style.display = 'grid'
 }
 
-let HideElement = (element) => {
+let DisplayNone = (element) => {
     element.style.display = 'none'
+}
+
+let DisplayBlock = (element) => {
+    element.style.display = 'block'
 }
 //___________________________________________________\\
 
