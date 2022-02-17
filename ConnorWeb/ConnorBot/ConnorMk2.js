@@ -30,9 +30,10 @@ let keywords = {}
 let position, mainColor, secColor
 
 let StartBot = (botname = 'TestBot') => {
+    //Také zobrazuje bota
     GetBotInfo(botname)
     GetKeywords(botname)
-    DisplayBot()
+    
     InitMessageHandler(botname)
     InitDisplayBTN()
 }
@@ -60,7 +61,7 @@ let InitCloseBTN = () => {
 
 //_______________________AJAX_______________________\\
 
-let GetKeywords = () => {
+let GetKeywords = (botname) => {
     $.ajax({
         url: "PHPout/getKeywords.php",
         type: "post",
@@ -77,7 +78,7 @@ let GetKeywords = () => {
 
 let GetBotInfo = (botname) => {
     $.ajax({
-        url: "http://127.0.0.1/ConnorWeb/PHPout/getBotInfo.php",
+        url: "PHPout/getBotInfo.php",
         type: "post",
         data: {
           botName: botname,
@@ -90,6 +91,8 @@ let GetBotInfo = (botname) => {
           console.log(position)
           console.log(mainColor)
           console.log(secColor)
+
+          DisplayBot(r['position'])
         }
     })
 }
@@ -112,14 +115,14 @@ let MessageHandler = (botname, keyword) => {
 
 //_________________Vytváření prvků___________________\\
 
-let DisplayBot = () => {
+let DisplayBot = (position) => {
     //Vnější prvek vlasnící všechny prvky až na DisplayBTN
     let BotBox = document.createElement('div')
     BotBox.id = 'ConIdBotBox'
+    BotBox.className = 'ConCl' + position
     //Zobrazuje zprávy uživatele a bota
     let MessageBox = document.createElement('div')
     MessageBox.id = 'ConIdMessageBox'
-    MessageBox.className = 'ConCl' + position
     //Form pro posílání uživatelských zpráv
     let Form = document.createElement('form')
     Form.id = 'ConIdForm'
@@ -144,7 +147,7 @@ let DisplayBot = () => {
 
     BotBox.appendChild(CloseBTN)
     BotBox.appendChild(MessageBox)
-    BotBox.appendChild(From)
+    BotBox.appendChild(Form)
 
     document.body.appendChild(BotBox)
     document.body.appendChild(DisplayBTN)

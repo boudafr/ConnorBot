@@ -29,12 +29,8 @@ ________________
     grid-template-columns: auto 2rem;
     grid-template-rows: 2rem auto 2rem;
     position: absolute;
-
-    min-width: 10rem;
-    min-height: 20rem;
-
-    max-width: 20vw;
-    max-height: 30vw;
+    width: 15rem;
+    height: 20rem;
 
     background-color: var(--ConMainCol);
 }
