@@ -14,12 +14,12 @@
     CloseBTN
         ? ID: ConIdCloseBTN
         Role: Schová Bota a zobrazí DisplayBTN
-    Form
-        ? ID: ConIdForm
-        Role: pro využití submit a post pro funkci bota
     InputBox
         ? ID: ConIdInputBox
         Role: Input pro uživatele pro posílání zpráv
+    SendBTN/SubBTN
+        ? ID: ConIDSubBTN
+        Role: posílá zprávu a inicializuje zpracovávání zprávy
     DisplayBTN
         ? ID: ConIdDisplayBTN
         Classy:
@@ -27,41 +27,20 @@
         Role: Zobrazení a minimalizace bota
 */
 let keywords = {}
-let position, mainColor, secColor
+let botname
 
-let StartBot = (botname = 'TestBot') => {
-    //Také zobrazuje bota
-    GetBotInfo(botname)
-    GetKeywords(botname)
-    
-    InitMessageHandler(botname)
-    InitDisplayBTN()
-}
-//_____________________Listeners____________________\\
-
-
-let InitMessageHandler = (botname) => {
-    let InputBox = document.getElementById('ConIdInputBox')
-    InputBox.addEventListener('submit', () => {OnMessageSend(botname)})
+let StartBot = (inputBotname = 'TestBot') => {
+    botname = inputBotname
+    console.log(botname)
+    InitBot()
+    GetKeywords()
 }
 
-let InitDisplayBTN = () => {
-    let DisplayBTN = document.getElementById('ConIdDisplayBTN')
-    DisplayBTN.addEventListener('click', () => {ShowBot()})
-}
-
-let InitCloseBTN = () => {
-    let CloseBTN = document.getElementById('ConIdCloseBTN')
-    CloseBTN = document.addEventListener('click', () => {HideBot()})
-}
-
-
-//__________________________________________________\\
 
 
 //_______________________AJAX_______________________\\
 
-let GetKeywords = (botname) => {
+let GetKeywords = () => {
     $.ajax({
         url: "PHPout/getKeywords.php",
         type: "post",
@@ -76,7 +55,7 @@ let GetKeywords = (botname) => {
     })
 }
 
-let GetBotInfo = (botname) => {
+let InitBot = () => {
     $.ajax({
         url: "PHPout/getBotInfo.php",
         type: "post",
@@ -85,19 +64,21 @@ let GetBotInfo = (botname) => {
         },
         dataType: "json",
         success: (r) => {
-          position = r['position']
-          mainColor = r['main_color']
-          secColor = r['secondary_color']
-          console.log(position)
-          console.log(mainColor)
-          console.log(secColor)
+          
+          console.log(r['position'])
+          console.log(r['main_color'])
+          console.log(r['secondary_color'])
 
+          let root = document.querySelector(':root')
+          root.style.setProperty('--ConMainCol', r['main_color'])
+          root.style.setProperty('--ConSecCol', r['secondary_color'])
           DisplayBot(r['position'])
         }
     })
 }
 
-let MessageHandler = (botname, keyword) => {
+let MessageHandler = (keyword) => {
+    console.log(keyword)
     $.ajax({
         url: "PHPout/getResponse.php",
         type: "post",
@@ -119,57 +100,68 @@ let DisplayBot = (position) => {
     //Vnější prvek vlasnící všechny prvky až na DisplayBTN
     let BotBox = document.createElement('div')
     BotBox.id = 'ConIdBotBox'
-    BotBox.className = 'ConCl' + position
+    BotBox.classList = 'ConCl' + position + ' ConClNone'
     //Zobrazuje zprávy uživatele a bota
     let MessageBox = document.createElement('div')
     MessageBox.id = 'ConIdMessageBox'
-    //Form pro posílání uživatelských zpráv
-    let Form = document.createElement('form')
-    Form.id = 'ConIdForm'
     //Tlačítko na schování bota
     let CloseBTN = document.createElement('button')
     CloseBTN.id = 'ConIdCloseBTN'
-    //tlažítko na odeslání zprávy
+    
+    //tlačítko na odeslání zprávy
     let SubBTN = document.createElement('input')
+    SubBTN.id = 'ConIdSubBTN'
     SubBTN.type = 'button'
-    //text box pro napsání zprávy botovvi (user input)
+    
+    //text box pro napsání zprávy botovi (user input)
     let InputBox = document.createElement('input')
     InputBox.type = 'text'
     InputBox.id = 'ConIdInputBox'
+    InputBox.autocomplete = "off"
     //tlačítko na zobrazení bota
     let DisplayBTN = document.createElement('input')
     DisplayBTN.type = 'button'
     DisplayBTN.id = 'ConIdDisplayBTN'
-    DisplayBTN.className = 'ConCl' + position
-
-    Form.appendChild(InputBox)
-    Form.appendChild(SubBTN)
+    DisplayBTN.classList = 'ConCl' + position + ' ConClBlock'
 
     BotBox.appendChild(CloseBTN)
     BotBox.appendChild(MessageBox)
-    BotBox.appendChild(Form)
+    BotBox.appendChild(InputBox)
+    BotBox.appendChild(SubBTN)
 
     document.body.appendChild(BotBox)
     document.body.appendChild(DisplayBTN)
+    //Přidává event listenery
+    DisplayBTN.addEventListener('click', () => {
+        ShowBot()
+    })
+    
+    SubBTN.addEventListener('click', () => {
+        console.log('SubBTN clicked')
+        OnMessageSend()
+    })
+
+    CloseBTN.addEventListener('click', () => {
+        HideBot()
+    })
 }
 
 //___________________________________________________\\
 
 //__________________Message Handlers_________________\\
 
-
-
-let OnMessageSend = (botname) => {
-    let message = toString(document.getElementById('ConIdInputBox').value)
+let OnMessageSend = () => {
+    let message = document.getElementById('ConIdInputBox').value
+    console.log(message)
 
     CreateNewUserMessage(message)
-    FindKeywords(botname, message)
+    FindKeywords(message)
 }
 
-let FindKeywords = (botname, text) => {
+let FindKeywords = (text) => {
     keywords.forEach(keyword => {
         if(text.includes(keyword)) {
-            MessageHandler(botname, keyword)
+            MessageHandler(keyword)
         }
     })
 }
@@ -199,36 +191,22 @@ let AttendMessage = (elementWithMessage) => {
 
 //_____________________CSS Change____________________\\
 
-
-
 let ShowBot = () => {
     let ChatBot = document.getElementById('ConIdBotBox')
-    DisplayGrid(ChatBot)
+    ChatBot.style.display = 'grid'
 
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
-    DisplayNone(DisplayBTN)
+    DisplayBTN.style.display = 'none'
 }
 
 let HideBot = () => {
+    console.log('Hide Bot')
     let ChatBot = document.getElementById('ConIdBotBox')
-    DisplayNone(ChatBot)
+    ChatBot.style.display = 'none'
 
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
-    DisplayBlock(DisplayBTN)
-} 
+    DisplayBTN.style.display = 'block'
 
-let DisplayGrid = (element) => {
-    element.style.display = 'grid'
 }
 
-let DisplayNone = (element) => {
-    element.style.display = 'none'
-}
-
-let DisplayBlock = (element) => {
-    element.style.display = 'block'
-}
 //___________________________________________________\\
-
-
-StartBot()

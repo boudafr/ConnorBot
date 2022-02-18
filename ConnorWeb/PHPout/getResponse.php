@@ -10,11 +10,11 @@ $BotID = $stmt->fetch();
 
 $sql2 = "SELECT response FROM `commands` WHERE keyword = ? AND bots_ID = ?";
 $stmt2 = $conn->prepare($sql2);
-$stmt2->execute([$_POST['keyword'], $BotID]);
+$stmt2->execute([$_POST['keyword'], $BotID['ID']]);
 
 
 $row = $stmt2->fetch();
-$result = '<div class="ConBotMessage">' . $row['response'] . '</div>';
+$result = $row['response'];
 
 
 echo($result);

@@ -2,7 +2,17 @@
     --ConMainCol: #AAAAff;
     --ConSecCol: #222255;
 }
+.ConClNone {
+    display: none;
+}
 
+.ConClGrid {
+    display: grid;
+}
+
+.ConClBlock {
+    display: block;
+}
 /*_____________________BotBox______________________*/
 
 /*      1     2  
@@ -18,46 +28,63 @@ ________________
 */
 #ConIdCloseBTN {grid-area: close;}
 #ConIdMessageBox {grid-area:  chat;}
-#ConIdForm {grid-area: form;}
+#ConIdInputBox {grid-area: input;}
+#ConIdSubBTN {grid-area: send;}
 
 #ConIdBotBox {
-    display: grid;
     grid-template-areas: 
     'empty close'
     'chat chat'
-    'form form';
+    'input send';
     grid-template-columns: auto 2rem;
     grid-template-rows: 2rem auto 2rem;
-    position: absolute;
     width: 15rem;
     height: 20rem;
 
     background-color: var(--ConMainCol);
 }
 
-#ConIdForm {
-    display: grid;
-    grid-template-columns: auto 2rem;
-}
-
 /*_________________Position Classes__________________*/
 
 .ConClbottom {
+    position: absolute;
+
     bottom: 0;
     right: 5vw;
 }
 
 .ConCltop {
+    position: absolute;
+
     top: 0;
     right: 5vw;
 }
 
 .ConClright {
+    position: absolute;
+
     right: 0;
     bottom: 5vw;
 }
 
 .ConClleft {
+    position: absolute;
+
     left: 0;
     bottom: 5vw;
+}
+
+#ConIdDisplayBTN {
+    height: 2rem;
+    width: 2rem;
+}
+
+.ConClBotMessage {
+    background-color: white;
+    padding-left: 0,1rem;
+}
+
+.ConClUserMessage {
+    background-color: var(--ConSecCol);
+    padding-left: 5rem;
 }
