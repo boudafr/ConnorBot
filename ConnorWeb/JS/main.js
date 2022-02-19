@@ -17,7 +17,6 @@ let onLoad = () => {
 
     let Add_Keyword = document.getElementById('add_keyword')
     Add_Keyword.addEventListener('click', () => {
-        console.log('test1')
         createKeyword()
     })
 
@@ -125,3 +124,4 @@ let editKeyword = () => {
         }
     })
 }
+

@@ -1,21 +1,84 @@
+:root {
+    --big-gap: 2rem;
+    --small-gap: 0.2rem;
+
+    --font-color: #ffffff;
+    --main-color: #3772b4;
+    --secondary-color: #155092;
+
+    --headder-font: 1.75rem;
+    --secondary-font: 1.5rem;
+}
+
 body {
     margin: 0;
+}
+
+#nav {
+    position: sticky;
+    top: 0;
+    height: var(--big-gap);
+
+    background-color: var(--secondary-color);
 }
 
 #setup-contents {grid-area: sc;}
 #setup-selection {grid-area: ss;}
 
 #main-content {
-    width: 100vw;
     display: grid;
 
-    gap: 1rem;
+    gap: var(--big-gap);
     margin: 0;
 
-    grid-template-areas: 
-    'sc sc sc sc ss'
-    ;
+    grid-template-areas:
+    'gap sc ss';
+    grid-template-columns: auto 30rem auto;
 
-    background-color: #3772b4;
+    background-color: var(--main-color);
 }
 
+form {
+    display: grid;
+    grid-row: var(--big-gap);
+    gap: var(--small-gap);
+}
+
+form h3 {
+    text-align: center;
+    color: var(--font-color);
+    font-size: var(--headder-font);
+}
+
+form input {
+    height: var(--big-gap);
+    font-size: var(--secondary-font);
+}
+
+form select {
+    height: var(--big-gap);
+    font-size: var(--secondary-font);
+}
+
+form input[type=color] {
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    background-color: unset;
+    width: auto;
+}
+
+form label {
+    padding: var(--small-gap);
+    padding-left: var(--big-gap);
+
+    height: var(--big-gap);
+    font-size: var(--headder-font);
+    
+    background-color: var(--secondary-color);
+    color: var(--font-color);
+}
+
+form textarea {
+    resize: vertical;
+}

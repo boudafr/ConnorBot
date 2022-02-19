@@ -32,6 +32,7 @@ ________________
 #ConIdSubBTN {grid-area: send;}
 
 #ConIdBotBox {
+    position: sticky;
     grid-template-areas: 
     'empty close'
     'chat chat'
@@ -42,6 +43,10 @@ ________________
     height: 20rem;
 
     background-color: var(--ConMainCol);
+}
+
+#ConIdMessageBox {
+    overflow-y: auto;
 }
 
 /*_________________Position Classes__________________*/

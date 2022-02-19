@@ -152,8 +152,10 @@ let DisplayBot = (position) => {
 let OnMessageSend = () => {
     let message = document.getElementById('ConIdInputBox').value
     console.log(message)
-
-    CreateNewUserMessage(message)
+    if(message) {
+        CreateNewUserMessage(message)
+    }
+    
     FindKeywords(message)
     
     message = ''
@@ -210,4 +212,26 @@ let HideBot = () => {
 
 }
 
+//___________________________________________________\\
+
+//_______________Developer functions_________________\\
+//TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+let StartAutoRefresh = () => {
+    let BotToBeRefreshed = document.getElementById('bot_name_input').text
+    StartBot(BotToBeRefreshed)
+    setInterval(() => {
+        RefreshThisBot()
+    }, 5000)
+}
+
+let RefreshThisBot = () => {
+    RemoveOldBot()
+    let BotToBeRefreshed = document.getElementById('bot_name_input')
+    StartBot(BotToBeRefreshed)
+}
+
+let RemoveOldBot = () => {
+    document.getElementById('ConIdBotBox').remove
+    document.getElementById('ConIdDisplayBTN').remove
+}
 //___________________________________________________\\

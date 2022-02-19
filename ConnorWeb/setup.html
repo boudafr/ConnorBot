@@ -12,15 +12,22 @@
     <script src="JS/main.js"></script>
     <link rel="stylesheet" href="CSS/setup.css">
 
+    <script src="ConnorBot/ConnorMk2.js" defer onload="StartAutoRefresh()"></script>
+    <link rel="stylesheet" href="ConnorBot/ConnorStylesMk2.css">
+
 </head>
 
 <body onload="onLoad()">
     <div id="nav">
-
+        <span>Profile</span>
+        <span>Log_out</span>
+        <span>Guide</span>
+        <!--Profile Log_out contact guide-->
     </div>
     <div id="main-content">
         <span id="setup-contents">
-            <form method="post">
+            <form method="post" id="botForm">
+                <h3>Create new bot</h3>
                 <label for="bot_name_create_input">Bot name</label>
                 <input type="text" name="bot_name_create_input" id="bot_name_create_input">
 
@@ -40,7 +47,9 @@
 
                 <input type="button" value="Add Bot" id="create_bot_submit">
             </form>
-            <form method="post">
+
+            <form method="post" id="messageForm">
+                <h3>Add new keyword</h3>
                 <label for="bot_name_input">Bot Name</label>
                 <select name="bot_name_input" id="bot_name_input">
 
@@ -67,6 +76,7 @@
 
             <div id="mesages_setup_box">
                 <form action="post">
+                    <h3>Edit Keyword</h3>
                     <label for="edit_keyword"></label>
                     <select name="edit_keyword" id="edit_keyword">
 
@@ -77,9 +87,7 @@
 
                     <input type="button" id="edit_keyword_submit" value="Edit keyword">
                 </form>
-
             </div>
-
         </span>
         <span id="setup-selection">
 
