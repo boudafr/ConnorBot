@@ -149,13 +149,14 @@ let DisplayBot = (position) => {
 //___________________________________________________\\
 
 //__________________Message Handlers_________________\\
-
 let OnMessageSend = () => {
     let message = document.getElementById('ConIdInputBox').value
     console.log(message)
 
     CreateNewUserMessage(message)
     FindKeywords(message)
+    
+    message = ''
 }
 
 let FindKeywords = (text) => {

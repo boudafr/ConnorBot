@@ -80,11 +80,29 @@ ________________
 }
 
 .ConClBotMessage {
-    background-color: white;
-    padding-left: 0,1rem;
+    padding: 0.2rem;
+    height: fit-content;
+    width: fit-content;
+    max-width: 10rem;
+
+    word-break: break-word;
+
+    margin-right: auto;
+    margin-left: 0.1rem;
+    border-radius: 0.5rem;
+    background-color: var(--ConSecCol);
 }
 
 .ConClUserMessage {
-    background-color: var(--ConSecCol);
-    padding-left: 5rem;
+    padding: 0.2rem;
+    height: fit-content;
+    width: fit-content;
+    max-width: 10rem;
+    
+    word-break: break-word;
+
+    margin-left: auto;
+    margin-right: 0.1rem;
+    border-radius: 0.5rem;
+    background-color: white;
 }
