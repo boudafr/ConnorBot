@@ -32,7 +32,7 @@ ________________
 #ConIdSubBTN {grid-area: send;}
 
 #ConIdBotBox {
-    position: sticky;
+    position: fixed;
     grid-template-areas: 
     'empty close'
     'chat chat'
@@ -52,34 +52,31 @@ ________________
 /*_________________Position Classes__________________*/
 
 .ConClbottom {
-    position: absolute;
 
     bottom: 0;
     right: 5vw;
 }
 
 .ConCltop {
-    position: absolute;
 
     top: 0;
     right: 5vw;
 }
 
 .ConClright {
-    position: absolute;
 
     right: 0;
     bottom: 5vw;
 }
 
 .ConClleft {
-    position: absolute;
 
     left: 0;
     bottom: 5vw;
 }
 
 #ConIdDisplayBTN {
+    position: fixed;
     height: 2rem;
     width: 2rem;
 }

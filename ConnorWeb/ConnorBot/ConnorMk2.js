@@ -215,7 +215,6 @@ let HideBot = () => {
 //___________________________________________________\\
 
 //_______________Developer functions_________________\\
-//TODO AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 let StartAutoRefresh = () => {
     let BotToBeRefreshed = document.getElementById('bot_name_input').text
     StartBot(BotToBeRefreshed)
