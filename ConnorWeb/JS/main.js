@@ -20,9 +20,14 @@ let onLoad = () => {
         createKeyword()
     })
 
-    let edit_keyword = document.getElementById('edit_keyword_submit')
-    edit_keyword.addEventListener('click', () => {
+    let Edit_Keyword = document.getElementById('edit_keyword_submit')
+    Edit_Keyword.addEventListener('click', () => {
         editKeyword()
+    })
+
+    let Refresh_BTN = document.getElementById('refresh_button')
+    Refresh_BTN.addEventListener('change', () => {
+        refreshBot()
     })
 
     getBotNames()
@@ -125,3 +130,17 @@ let editKeyword = () => {
     })
 }
 
+
+let refreshBot = () => {
+    botID = document.getElementById('bot_name_input').value
+    $.ajax({
+        url: "PHP/getBotName.php",
+        type: "post",
+        data: {
+            botID: botID,
+        },
+        success: (r) => {
+            StartBot(r)
+        }
+    })
+}

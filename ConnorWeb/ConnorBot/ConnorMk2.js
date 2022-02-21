@@ -213,24 +213,3 @@ let HideBot = () => {
 }
 
 //___________________________________________________\\
-
-//_______________Developer functions_________________\\
-let StartAutoRefresh = () => {
-    let BotToBeRefreshed = document.getElementById('bot_name_input').text
-    StartBot(BotToBeRefreshed)
-    setInterval(() => {
-        RefreshThisBot()
-    }, 5000)
-}
-
-let RefreshThisBot = () => {
-    RemoveOldBot()
-    let BotToBeRefreshed = document.getElementById('bot_name_input')
-    StartBot(BotToBeRefreshed)
-}
-
-let RemoveOldBot = () => {
-    document.getElementById('ConIdBotBox').remove
-    document.getElementById('ConIdDisplayBTN').remove
-}
-//___________________________________________________\\
