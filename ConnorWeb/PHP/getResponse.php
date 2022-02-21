@@ -9,4 +9,9 @@ $result = "";
 
 $row = $stmt->fetch();
 
-echo($row['response']);
+if($row) {
+    echo($row['response']);    
+}
+else {
+    echo('');
+}

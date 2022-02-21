@@ -7,7 +7,6 @@ let onLoad = () => {
     let createBotButton = document.getElementById('create_bot_submit')
     createBotButton.addEventListener('click', () => {
         createBot()
-        getBotNames()
     })
 
     let BotSelection = document.getElementById('bot_name_input')
@@ -26,7 +25,7 @@ let onLoad = () => {
     })
 
     let Refresh_BTN = document.getElementById('refresh_button')
-    Refresh_BTN.addEventListener('change', () => {
+    Refresh_BTN.addEventListener('click', () => {
         refreshBot()
     })
 
@@ -87,6 +86,7 @@ let createBot = () => {
         },
         success: () => {
             console.log('Bot Created')
+            getBotNames()
         }
     })
 }
@@ -112,6 +112,7 @@ let createKeyword = () => {
         },
         success: (r) => {
             console.log(r)
+            getKeywords()
         }
     })
 }
@@ -133,6 +134,12 @@ let editKeyword = () => {
 
 let refreshBot = () => {
     botID = document.getElementById('bot_name_input').value
+    if(document.getElementById('ConIdDisplayBTN')) {
+        let DisplayBTN = document.getElementById('ConIdDisplayBTN')
+        DisplayBTN.parentNode.removeChild(DisplayBTN)
+        let BotBox = document.getElementById('ConIdBotBox')
+        BotBox.parentNode.removeChild(BotBox)
+    }
     $.ajax({
         url: "PHP/getBotName.php",
         type: "post",
@@ -143,4 +150,5 @@ let refreshBot = () => {
             StartBot(r)
         }
     })
+
 }
