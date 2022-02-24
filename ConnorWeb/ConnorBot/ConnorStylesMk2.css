@@ -17,7 +17,7 @@
 
 /*      1     2  
 ________________
-|____________|X|1
+|+|-|________|X|1
 |              |
 |              |
 |     Chat     |2
@@ -26,6 +26,8 @@ ________________
 |Message...__|>|3
 
 */
+#ConIdMakeLarger {grid-area: lar;}
+#ConIdMakeSmaller {grid-area: smal;}
 #ConIdCloseBTN {grid-area: close;}
 #ConIdMessageBox {grid-area:  chat;}
 #ConIdInputBox {grid-area: input;}
@@ -34,13 +36,18 @@ ________________
 #ConIdBotBox {
     position: fixed;
     grid-template-areas: 
-    'empty close'
-    'chat chat'
-    'input send';
-    grid-template-columns: auto 2rem;
+    'lar smal empty close'
+    'chat chat chat chat'
+    'input input input send';
+    grid-template-columns:2rem 2rem auto 2rem;
     grid-template-rows: 2rem auto 2rem;
+    /*
     width: 15rem;
     height: 20rem;
+    */
+    resize: both;
+    overflow: auto;
+
 
     background-color: var(--ConMainCol);
 }

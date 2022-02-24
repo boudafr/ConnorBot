@@ -4,6 +4,8 @@
         ? ID: ConIdBotBox
         Classy:
             ? ConCl + <position> : Div pro pozicování bota a talčítka pro zobrazení
+        Vlastní Atributy
+            ConSize: [0-3] úrčuje velikost bota
         Role: Mít v sobě všechny prvky krom DisplayBTN
     ChatBox
         ? ID: ConIdMessageBox
@@ -25,9 +27,18 @@
         Classy:
             ? ConCl + <position> : Div pro pozicování bota a talčítka pro zobrazení
         Role: Zobrazení a minimalizace bota
+    MakeLarger
+        ? ID: ConIdMakeLarger
+        Role: Zvětšit okno bota
+    MakeSmaller
+        ? ID: ConIdMakeSmaller
+        Role: Zmenšit okno bota
+    
 */
 let keywords = {}
 let botname
+const BotSizeW = ['10rem', '15rem', '20rem', '25rem']
+const BotSizeH = ['15rem', '20rem', '25rem', '30rem']
 
 let StartBot = (inputBotname = 'TestBot') => {
     botname = inputBotname
@@ -50,7 +61,7 @@ let GetKeywords = () => {
         dataType: "json",
         success: (r) => {
           keywords = r
-          console.log(keywords)
+          //console.log(keywords)
         }
     })
 }
@@ -65,9 +76,9 @@ let InitBot = () => {
         dataType: "json",
         success: (r) => {
           
-          console.log(r['position'])
-          console.log(r['main_color'])
-          console.log(r['secondary_color'])
+          //console.log(r['position'])
+          //console.log(r['main_color'])
+          //console.log(r['secondary_color'])
 
           let root = document.querySelector(':root')
           root.style.setProperty('--ConMainCol', r['main_color'])
@@ -78,7 +89,7 @@ let InitBot = () => {
 }
 
 let MessageHandler = (keyword) => {
-    console.log(keyword)
+    //console.log(keyword)
     $.ajax({
         url: "PHPout/getResponse.php",
         type: "post",
@@ -101,6 +112,9 @@ let DisplayBot = (position) => {
     let BotBox = document.createElement('div')
     BotBox.id = 'ConIdBotBox'
     BotBox.classList = 'ConCl' + position + ' ConClNone'
+    BotBox.style.height = '20rem'
+    BotBox.style.width = '15rem'
+    BotBox.setAttribute('ConSize', 1)
     //Zobrazuje zprávy uživatele a bota
     let MessageBox = document.createElement('div')
     MessageBox.id = 'ConIdMessageBox'
@@ -123,7 +137,15 @@ let DisplayBot = (position) => {
     DisplayBTN.type = 'button'
     DisplayBTN.id = 'ConIdDisplayBTN'
     DisplayBTN.classList = 'ConCl' + position + ' ConClBlock'
+    //tlačítka na zvětšení a zmenšení
+    let MakeLarger = document.createElement('button')
+    MakeLarger.id = 'ConIdMakeLarger'
 
+    let MakeSmaller = document.createElement('button')
+    MakeSmaller.id = 'ConIdMakeSmaller'
+
+    BotBox.appendChild(MakeLarger)
+    BotBox.appendChild(MakeSmaller)
     BotBox.appendChild(CloseBTN)
     BotBox.appendChild(MessageBox)
     BotBox.appendChild(InputBox)
@@ -137,13 +159,15 @@ let DisplayBot = (position) => {
     })
     
     SubBTN.addEventListener('click', () => {
-        console.log('SubBTN clicked')
+        //console.log('SubBTN clicked')
         OnMessageSend()
     })
 
-    CloseBTN.addEventListener('click', () => {
-        HideBot()
-    })
+    CloseBTN.addEventListener('click', () => {HideBot()})
+    
+    MakeLarger.addEventListener('click', () => {MakeBotLarger()})
+    
+    MakeSmaller.addEventListener('click', () => {MakeBotSmaller()})
 }
 
 //___________________________________________________\\
@@ -151,7 +175,7 @@ let DisplayBot = (position) => {
 //__________________Message Handlers_________________\\
 let OnMessageSend = () => {
     let message = document.getElementById('ConIdInputBox').value
-    console.log(message)
+    //console.log(message)
     if(message) {
         CreateNewUserMessage(message)
     }
@@ -203,13 +227,33 @@ let ShowBot = () => {
 }
 
 let HideBot = () => {
-    console.log('Hide Bot')
+    //console.log('Hide Bot')
     let ChatBot = document.getElementById('ConIdBotBox')
     ChatBot.style.display = 'none'
 
     let DisplayBTN = document.getElementById('ConIdDisplayBTN')
     DisplayBTN.style.display = 'block'
 
+}
+
+let MakeBotSmaller = () => {
+    let tmpBotBox = document.getElementById('ConIdBotBox')
+    if (tmpBotBox.getAttribute('ConSize') > 0) {
+        tmpBotBox.setAttribute('ConSIze', tmpBotBox.getAttribute('ConSize') - 1)
+        //console.log(tmpBotBox.getAttribute('ConSize'))
+        tmpBotBox.style.width = BotSizeW[tmpBotBox.getAttribute('ConSize')]
+        tmpBotBox.style.height = BotSizeH[tmpBotBox.getAttribute('ConSize')]
+    }
+}
+
+let MakeBotLarger = () => {
+    let tmpBotBox = document.getElementById('ConIdBotBox')
+    if (tmpBotBox.getAttribute('ConSize') < 3) {
+        tmpBotBox.setAttribute('ConSIze', parseInt(tmpBotBox.getAttribute('ConSize'), 10) + 1)
+        //console.log(tmpBotBox.getAttribute('ConSize'))
+        tmpBotBox.style.width = BotSizeW[tmpBotBox.getAttribute('ConSize')]
+        tmpBotBox.style.height = BotSizeH[tmpBotBox.getAttribute('ConSize')]
+    }
 }
 
 //___________________________________________________\\
