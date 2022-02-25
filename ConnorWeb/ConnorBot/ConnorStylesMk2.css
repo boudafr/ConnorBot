@@ -45,8 +45,7 @@ ________________
     width: 15rem;
     height: 20rem;
     */
-    resize: both;
-    overflow: auto;
+    
 
 
     background-color: var(--ConMainCol);
