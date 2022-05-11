@@ -2,6 +2,7 @@
 
 class login_class {
     
+    private $salt = ',xds1z';
     public $conn;
     
     public function __construct() {
@@ -29,7 +30,7 @@ class login_class {
                     $stmt = $this->conn->prepare('SELECT * FROM users WHERE username = ?');
                     $stmt->execute([$_POST['login_name']]);
                     $user = $stmt->fetch();
-                    if(password_verify($_POST['login_password'], $user['password'])) {
+                    if(password_verify($_POST['login_password'] . $this->salt, $user['password'])) {
                         $_SESSION['login_name'] = $_SESSION['username'];
                         $_SESSION['userID'] = $user['ID'];
                         header("Location: $presmerovani");
@@ -59,7 +60,7 @@ class login_class {
                     if ($stmt->fetch() === false) {
                         $stmt = $this->conn->prepare('INSERT INTO `users` (`username`, `password`, email) VALUES (?, ?, ?)');
 
-                        $hash = password_hash($_POST['register_password'], PASSWORD_DEFAULT);
+                        $hash = password_hash($_POST['register_password'] . $this->salt, PASSWORD_DEFAULT);
                         $stmt->execute([$_POST['register_name'], $hash, $_POST['register_email']]);
 
                         echo('<div id="message_box" class="bg_green">Account created</div>');

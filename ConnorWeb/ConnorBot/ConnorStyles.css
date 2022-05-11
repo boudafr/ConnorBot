@@ -15,7 +15,8 @@
 }
 /*_____________________BotBox______________________*/
 
-/*      1     2  
+/*
+1  2    3     4  
 ________________
 |+|-|________|X|1
 |              |
@@ -52,7 +53,9 @@ ________________
 }
 
 #ConIdMessageBox {
+    padding:1ch;
     overflow-y: auto;
+    gap: 1ch;
 }
 
 /*_________________Position Classes__________________*/
@@ -87,8 +90,10 @@ ________________
     width: 2rem;
 }
 
+/*_________________Messages__________________*/
+
 .ConClBotMessage {
-    padding: 0.2rem;
+    padding: 0.2ch 1ch;
     height: fit-content;
     width: fit-content;
     max-width: 10rem;
@@ -102,7 +107,7 @@ ________________
 }
 
 .ConClUserMessage {
-    padding: 0.2rem;
+    padding: 0.2ch 1ch;
     height: fit-content;
     width: fit-content;
     max-width: 10rem;
@@ -113,4 +118,28 @@ ________________
     margin-right: 0.1rem;
     border-radius: 0.5rem;
     background-color: white;
+}
+
+/*__________Buttons____________*/
+#ConIdDisplayBTN {
+    background-color: var(--ConSecCol);
+    border-radius: 0.1rem;
+    border-width: 0;
+}
+
+#ConIdBotBox button {
+    background-color: var(--ConSecCol);
+    border-radius: 0.1rem;
+    border-width: 0;
+}
+
+
+#ConIdBotBox button:hover {
+    border-color: #111111;
+    border-width: 1px;
+}
+
+#ConIdDisplayBTN:hover {
+    border-color: #111111;
+    border-width: 1px;
 }

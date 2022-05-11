@@ -17,25 +17,46 @@ body {
 #nav {
     position: sticky;
     top: 0;
-    height: var(--big-gap);
+    height: auto;
 
     background-color: var(--secondary-color);
+
+    display: flex;
+    gap: var(--small-gap);
 }
 
-#setup-contents {grid-area: sc;}
-#setup-selection {grid-area: ss;}
+#nav span {
+    color: white;
+    font-size: 1.5rem;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 1ch;
+}
+
+#nav span a {
+    text-decoration: none;
+    color: white;
+}
+
+#nav span button {
+    height: 2rem;
+    width: 2rem;
+}
+
 
 #main-content {
-    display: grid;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 
     gap: var(--big-gap);
     margin: 0;
 
-    grid-template-areas:
-    'gap sc ss';
-    grid-template-columns: auto 30rem auto;
-
     background-color: var(--main-color);
+}
+
+#setup-contents {
+    width: 30em;
 }
 
 form {
@@ -44,7 +65,7 @@ form {
     gap: var(--small-gap);
 }
 
-form h3 {
+h3 {
     text-align: center;
     color: var(--font-color);
     font-size: var(--headder-font);
@@ -55,12 +76,12 @@ form input {
     font-size: var(--secondary-font);
 }
 
-form select {
+select {
     height: var(--big-gap);
     font-size: var(--secondary-font);
 }
 
-form input[type=color] {
+input[type=color] {
     padding: 0;
     border: none;
     cursor: pointer;
@@ -68,7 +89,7 @@ form input[type=color] {
     width: auto;
 }
 
-form label {
+label {
     padding: var(--small-gap);
     padding-left: var(--big-gap);
 
@@ -81,4 +102,42 @@ form label {
 
 form textarea {
     resize: vertical;
+}
+
+
+
+/*___________selection_navigation__________*/
+
+
+#setup-selection {
+    position: sticky;
+    top: 3rem;
+    height: fit-content;
+
+    display: flex;
+    flex-direction: column;
+    gap: 1ch;
+    padding: 1ch;
+    padding-top: 5ch;
+}
+
+#setup-selection a {
+    color: var(--font-color);
+    text-decoration: none;
+    font-size: 1.5rem;
+    
+}
+
+#setup-selection button {
+    max-width: 30ch;
+    border-width: 0.2ch;
+    border-color: var(--font-color);
+    background-color: var(--main-color);
+}
+
+#select_bot_to_edit {
+    background-color: var(--secondary-color);
+    display: flex;
+    flex-direction: column;
+    gap: var(--small-gap);
 }

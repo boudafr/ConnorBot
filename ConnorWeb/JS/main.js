@@ -29,16 +29,24 @@ let onLoad = () => {
         refreshBot()
     })
 
+    let Edit_Bot = document.getElementById('edit_bot_submit')
+    Edit_Bot.addEventListener('click', () => {
+        editBot()
+    })
+    
+    //console.log('Starting web')
     getBotNames()
 }
 
 let getBotNames = () => {
+    //console.log('getting bot names')
     $.ajax({
         url: "PHP/getBotNames.php",
         type: "post",
         data: {},
         dataType: "html",
         success: (r) => {
+            //console.log(r)
             document.getElementById('bot_name_input').innerHTML = r
             getKeywords()
         }
@@ -94,12 +102,14 @@ let createBot = () => {
 let createKeyword = () => {
     let def = 0
     let res = 0
+    /*
     if (document.getElementById('default_input').value) {
         def = 1
     }
     if (document.getElementById('options_input').value) {
         res = 1
     }
+    */
     $.ajax({
         url: "PHP/addKeyword.php",
         type: "post",
@@ -126,6 +136,24 @@ let editKeyword = () => {
             response: document.getElementById('edit_response').value,
         },
         success: () => {
+            getResponse()
+        }
+    })
+}
+
+let editBot = () => {
+    $.ajax({
+        url: "PHP/editKeyword.php",
+        type: "post",
+        data: {
+            OldBotname: document.getElementById('bot_name_input'),
+            botName: document.getElementById('bot_name_edit_input'),
+            mainColor: document.getElementById('edit_main_color_input'),
+            secColor: document.getElementById('edit_secondary_color_input'),
+            position: document.getElementById('edit_position_input'),
+        },
+        success: () => {
+            getBotNames()
             getResponse()
         }
     })

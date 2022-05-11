@@ -1,5 +1,5 @@
 <?php
-
+header('Access-Control-Allow-Origin: *');
 include_once('../PHP/config.php');
 
 $sql = "SELECT ID FROM `bots` WHERE `name` = ?";

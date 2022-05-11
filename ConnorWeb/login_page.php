@@ -38,7 +38,7 @@ $prihlaseni->register();
                 <input type="text" name="register_name" id="register_name" required>
 
                 <label for="register_name">Email</label>
-                <input type="text" name="register_email" id="register_email" required>
+                <input type="email" name="register_email" id="register_email" required>
 
                 <label for="register_password">Password</label>
                 <input type="password" name="register_password" id="register_password" required>

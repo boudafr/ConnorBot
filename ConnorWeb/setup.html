@@ -9,91 +9,119 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
         integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="ConnorBot/ConnorMk2.js" defer></script>
-    <script src="JS/main.js" defer></script>
-    
-    <link rel="stylesheet" href="CSS/setup.css">   
-    <link rel="stylesheet" href="ConnorBot/ConnorStylesMk2.css">
+    <script src="https://kit.fontawesome.com/3ed253b427.js" crossorigin="anonymous"></script>
+    <script src="ConnorBot/Connor.js" defer></script>
+    <link rel="stylesheet" href="ConnorBot/ConnorStyles.css">
+
+    <script src="JS/main.js"></script>
+    <link rel="stylesheet" href="CSS/setup.css">
 
 </head>
 
 <body onload="onLoad()">
     <div id="nav">
         <span>Profile</span>
-        <span>Log_out</span>
+        <span><a href="../index.php">Log out</a></span>
         <span>Guide</span>
-        <span><button id="refresh_button">reverse šipečka</button></span>
+        <span><button id="refresh_button"><i class="fa-solid fa-arrow-rotate-right"></i></button></span>
         <!--Profile Log_out contact guide-->
     </div>
     <div id="main-content">
-        <span id="setup-contents">
-            <form method="post" id="botForm">
+        <div id="setup-contents">
+            <form method="post" id="create_bot_form">
                 <h3>Create new bot</h3>
                 <label for="bot_name_create_input">Bot name</label>
-                <input type="text" name="bot_name_create_input" id="bot_name_create_input">
+                <input type="text" name="bot_name_create_input" id="bot_name_create_input" required>
 
                 <label for="main_color_input">Main Colour</label>
-                <input type="color" name="main_color_input" id="main_color_input">
+                <input type="color" name="main_color_input" id="main_color_input" required>
 
                 <label for="secondary_color_input">Secondary Colour</label>
-                <input type="color" name="secondary_color_input" id="secondary_color_input">
+                <input type="color" name="secondary_color_input" id="secondary_color_input" required>
 
                 <label for="position_input">Pozice</label>
-                <select name="position_input" id="position_input">
+                <select name="position_input" id="position_input" required>
                     <option value="bottom">bottom</option>
                     <option value="left">left</option>
                     <option value="right">right</option>
                     <option value="top">top</option>
                 </select>
 
-                <input type="button" value="Add Bot" id="create_bot_submit">
+                <input type="button" value="Create Bot" id="create_bot_submit">
             </form>
 
-            <form method="post" id="messageForm">
-                <h3>Add new keyword</h3>
-                <label for="bot_name_input">Bot Name</label>
-                <select name="bot_name_input" id="bot_name_input">
+            <h3>Select bot to konfigure</h3>
+            <div id="select_bot_to_edit">
+            <label for="bot_name_input">Bot Name</label>
+                <select name="bot_name_input" id="bot_name_input" required>
                         
                 </select>
+            </div>
+            <form method="post" id="create_mesage_form">
+                <h3>Add new keyword</h3>
+                
 
 
                 <label for="keyword_input">Add Keyword</label>
-                <input list="keywords_list" name="keyword_input" id="keyword_input">
+                <input list="keywords_list" name="keyword_input" id="keyword_input" required>
                 <datalist id="keywords_list">
 
                 </datalist>
 
                 <label for="response_input">Response</label>
-                <input type="textarea" id="response_input">
-
-                <label for="options_input">Include options</label>
-                <input type="checkbox" name="options_input" id="options_input">
-
-                <label for="default_input">Default message</label>
-                <input type="checkbox" name="default_input" id="default_input">
+                <input type="textarea" id="response_input" required>
 
                 <input type="button" value="Add Response" id="add_keyword">
             </form>
 
-            <div id="mesages_setup_box">
-                <form action="post">
-                    <h3>Edit Keyword</h3>
-                    <label for="edit_keyword"></label>
-                    <select name="edit_keyword" id="edit_keyword">
+            <form method="post" id="edit_bot_form">
+                <h3>Edit bot</h3>
+                <label for="bot_name_edit_input">Bot name</label>
+                <input type="text" name="bot_name_edit_input" id="bot_name_edit_input" required>
 
-                    </select>
+                <label for="edit_main_color_input">Main Colour</label>
+                <input type="color" name="edit_main_color_input" id="edit_main_color_input" required>
 
-                    <label for="edit_response"></label>
-                    <textarea name="edit_response" id="edit_response"></textarea>
+                <label for="edit_secondary_color_input">Secondary Colour</label>
+                <input type="color" name="edit_secondary_color_input" id="edit_secondary_color_input" required>
 
-                    <input type="button" id="edit_keyword_submit" value="Edit keyword">
-                </form>
-            </div>
-        </span>
-        <span id="setup-selection">
+                <label for="edit_position_input">Pozice</label>
+                <select name="edit_position_input" id="edit_position_input" required>
+                    <option value="bottom">bottom</option>
+                    <option value="left">left</option>
+                    <option value="right">right</option>
+                    <option value="top">top</option>
+                </select>
 
-        </span>
+                <input type="button" value="Edit Bot" id="edit_bot_submit">
+            </form>
+
+            
+            <form method="post" id="edit_message_form">
+                <h3>Edit Keyword</h3>
+                <label for="edit_keyword"></label>
+                <select name="edit_keyword" id="edit_keyword" required>
+
+                </select>
+
+                <label for="edit_response"></label>
+                <textarea name="edit_response" id="edit_response" required></textarea>
+
+                <input type="button" id="edit_keyword_submit" value="Edit keyword">
+            </form>
+        </div>
+
+        <div id="setup-selection">
+
+            <button><a href="#create_bot_form">Create bot</a></button>
+            <button><a href="#create_mesage_form">Create message</a></button>
+            <button><a href="#edit_bot_form">Edit bot</a></button>
+            <button><a href="#edit_message_form">Edit message</a></button>       
+            
+        </div>
+        
     </div>
+    
 </body>
 
 </html>

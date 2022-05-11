@@ -37,8 +37,8 @@
 */
 let keywords = {}
 let botname
-const BotSizeW = ['10rem', '15rem', '20rem', '25rem']
-const BotSizeH = ['15rem', '20rem', '25rem', '30rem']
+const BotSizeW = ['15rem', '20rem', '25rem']
+const BotSizeH = ['20rem', '25rem', '30rem']
 
 let StartBot = (inputBotname = 'TestBot') => {
     botname = inputBotname
@@ -53,7 +53,7 @@ let StartBot = (inputBotname = 'TestBot') => {
 
 let GetKeywords = () => {
     $.ajax({
-        url: "PHPout/getKeywords.php",
+        url: "https://lab.uzlabina.cz/~boudafr/ConnorWeb/PHPout/getKeywords.php",
         type: "post",
         data: {
           botName: botname,
@@ -68,7 +68,7 @@ let GetKeywords = () => {
 
 let InitBot = () => {
     $.ajax({
-        url: "PHPout/getBotInfo.php",
+        url: "https://lab.uzlabina.cz/~boudafr/ConnorWeb/PHPout/getBotInfo.php",
         type: "post",
         data: {
           botName: botname,
@@ -91,7 +91,7 @@ let InitBot = () => {
 let MessageHandler = (keyword) => {
     //console.log(keyword)
     $.ajax({
-        url: "PHPout/getResponse.php",
+        url: "https://lab.uzlabina.cz/~boudafr/ConnorWeb/PHPout/getResponse.php",
         type: "post",
         data: {
           keyword: keyword,
@@ -121,11 +121,13 @@ let DisplayBot = (position) => {
     //Tlačítko na schování bota
     let CloseBTN = document.createElement('button')
     CloseBTN.id = 'ConIdCloseBTN'
+    CloseBTN.innerHTML = '<i class="fa-solid fa-xmark"></i>'
     
     //tlačítko na odeslání zprávy
-    let SubBTN = document.createElement('input')
+    let SubBTN = document.createElement('button')
     SubBTN.id = 'ConIdSubBTN'
-    SubBTN.type = 'button'
+    SubBTN.type = 'submit'
+    SubBTN.innerHTML = '<i class="fa-solid fa-paper-plane"></i>'
     
     //text box pro napsání zprávy botovi (user input)
     let InputBox = document.createElement('input')
@@ -133,16 +135,18 @@ let DisplayBot = (position) => {
     InputBox.id = 'ConIdInputBox'
     InputBox.autocomplete = "off"
     //tlačítko na zobrazení bota
-    let DisplayBTN = document.createElement('input')
-    DisplayBTN.type = 'button'
+    let DisplayBTN = document.createElement('button')
     DisplayBTN.id = 'ConIdDisplayBTN'
     DisplayBTN.classList = 'ConCl' + position + ' ConClBlock'
+    DisplayBTN.innerHTML = '<i class="fa-solid fa-message"></i>'
     //tlačítka na zvětšení a zmenšení
     let MakeLarger = document.createElement('button')
     MakeLarger.id = 'ConIdMakeLarger'
+    MakeLarger.innerHTML = '<i class="fa-solid fa-plus"></i>'
 
     let MakeSmaller = document.createElement('button')
     MakeSmaller.id = 'ConIdMakeSmaller'
+    MakeSmaller.innerHTML = '<i class="fa-solid fa-minus"></i>'
 
     BotBox.appendChild(MakeLarger)
     BotBox.appendChild(MakeSmaller)
@@ -183,6 +187,7 @@ let OnMessageSend = () => {
     FindKeywords(message)
     
     message = ''
+    document.getElementById('ConIdInputBox').value = ''
 }
 
 let FindKeywords = (text) => {
@@ -248,7 +253,7 @@ let MakeBotSmaller = () => {
 
 let MakeBotLarger = () => {
     let tmpBotBox = document.getElementById('ConIdBotBox')
-    if (tmpBotBox.getAttribute('ConSize') < 3) {
+    if (tmpBotBox.getAttribute('ConSize') < 2) {
         tmpBotBox.setAttribute('ConSIze', parseInt(tmpBotBox.getAttribute('ConSize'), 10) + 1)
         //console.log(tmpBotBox.getAttribute('ConSize'))
         tmpBotBox.style.width = BotSizeW[tmpBotBox.getAttribute('ConSize')]
