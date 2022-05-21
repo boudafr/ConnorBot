@@ -141,3 +141,16 @@ form textarea {
     flex-direction: column;
     gap: var(--small-gap);
 }
+
+#copyThisCode {
+    background-color: var(--font-color);
+    max-width: 37ch;
+    word-wrap: break-word;
+    font-size: 0.75rem;
+}
+
+h4 {
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    color: var(--font-color);
+}

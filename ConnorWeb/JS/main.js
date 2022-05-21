@@ -33,6 +33,11 @@ let onLoad = () => {
     Edit_Bot.addEventListener('click', () => {
         editBot()
     })
+
+    let Del_Keyword = document.getElementById('delete_keyword')
+    Del_Keyword.addEventListener('click', () => {
+        deleteKeyword()
+    })
     
     //console.log('Starting web')
     getBotNames()
@@ -64,6 +69,7 @@ let getKeywords = () => {
         success: (r) => {
             document.getElementById('edit_keyword').innerHTML = r
             getResponse()
+            displayCodeToCopy()
         }
     })
 }
@@ -100,31 +106,37 @@ let createBot = () => {
 }
 
 let createKeyword = () => {
-    let def = 0
-    let res = 0
-    /*
-    if (document.getElementById('default_input').value) {
-        def = 1
+    if (document.getElementById('msg_type_input').value === 1) {
+        $.ajax({
+            url: "PHP/addKeyword.php",
+            type: "post",
+            data: {
+                keyword: document.getElementById('keyword_input').value,
+                response: document.getElementById('response_input').value,
+                botID: document.getElementById('bot_name_input').value,
+            },
+            success: (r) => {
+                console.log(r)
+                getKeywords()
+            }
+        })
     }
-    if (document.getElementById('options_input').value) {
-        res = 1
+    else {
+        $.ajax({
+            url: "PHP/addSpecialKeyword.php",
+            type: "post",
+            data: {
+                response: document.getElementById('response_input').value,
+                botID: document.getElementById('bot_name_input').value,
+                type: document.getElementById('msg_type_input').value,
+            },
+            success: (r) => {
+                console.log(r)
+                getKeywords()
+            }
+        })
     }
-    */
-    $.ajax({
-        url: "PHP/addKeyword.php",
-        type: "post",
-        data: {
-            keyword: document.getElementById('keyword_input').value,
-            response: document.getElementById('response_input').value,
-            default: def,
-            responses: res,
-            botID: document.getElementById('bot_name_input').value,
-        },
-        success: (r) => {
-            console.log(r)
-            getKeywords()
-        }
-    })
+    
 }
 
 let editKeyword = () => {
@@ -143,14 +155,14 @@ let editKeyword = () => {
 
 let editBot = () => {
     $.ajax({
-        url: "PHP/editKeyword.php",
+        url: "PHP/editBot.php",
         type: "post",
         data: {
-            OldBotname: document.getElementById('bot_name_input'),
-            botName: document.getElementById('bot_name_edit_input'),
-            mainColor: document.getElementById('edit_main_color_input'),
-            secColor: document.getElementById('edit_secondary_color_input'),
-            position: document.getElementById('edit_position_input'),
+            OldBotname: document.getElementById('bot_name_input').value,
+            botName: document.getElementById('bot_name_edit_input').value,
+            mainColor: document.getElementById('edit_main_color_input').value,
+            secColor: document.getElementById('edit_secondary_color_input').value,
+            position: document.getElementById('edit_position_input').value,
         },
         success: () => {
             getBotNames()
@@ -180,3 +192,40 @@ let refreshBot = () => {
     })
 
 }
+
+let deleteKeyword = () => {
+    $.ajax({
+        url: "PHP/delKeyword.php",
+        type: "post",
+        data: {
+            keywordID: document.getElementById('edit_keyword').value,
+        },
+        success: () => {
+            getBotNames()
+            getKeywords()
+        }
+    })
+}
+
+let deleteBot = () => {
+    $.ajax({
+        url: "PHP/delBot.php",
+        type: "post",
+        data: {
+            botID: document.getElementById('bot_name_input').value
+        },
+        success: () => {
+            getBotNames()
+            getKeywords()
+        }
+
+    })
+}
+
+let displayCodeToCopy = () => {
+    document.getElementById('copyThisCode').innerHTML = '&ltscript src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"&gt&lt/script&gt' +
+    '&ltscript src="https://kit.fontawesome.com/3ed253b427.js" crossorigin="anonymous"&gt&lt/script&gt' +
+    '&ltscript src="https://lab.uzlabina.cz/~boudafr/ConnorWeb/ConnorBot/Connor.js" defer onload="StartBot(\''+ document.getElementById('bot_name_input').options[document.getElementById('bot_name_input').selectedIndex].text +'\')"&gt&lt/script&gt' +
+    '&ltlink rel="stylesheet" href="https://lab.uzlabina.cz/~boudafr/ConnorWeb/ConnorBot/ConnorStyles.css"&gt'
+}
+

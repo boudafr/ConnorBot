@@ -103,6 +103,21 @@ let MessageHandler = (keyword) => {
         }
       })
 }
+
+let KeywordNotFound = () => {
+    $.ajax({
+        url: "https://lab.uzlabina.cz/~boudafr/ConnorWeb/PHPout/getSpecialResponse.php",
+        type: "post",
+        data: {
+          type: 2,
+          botName: botname,
+        },
+        dataType: "html",
+        success: (zprava) => {
+          CreateNewBotMessage(zprava)
+        }
+    })
+}
 //___________________________________________________\\
 
 //_________________Vytváření prvků___________________\\
@@ -172,6 +187,12 @@ let DisplayBot = (position) => {
     MakeLarger.addEventListener('click', () => {MakeBotLarger()})
     
     MakeSmaller.addEventListener('click', () => {MakeBotSmaller()})
+
+    InputBox.addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            OnMessageSend()
+        }
+    })
 }
 
 //___________________________________________________\\
@@ -179,7 +200,6 @@ let DisplayBot = (position) => {
 //__________________Message Handlers_________________\\
 let OnMessageSend = () => {
     let message = document.getElementById('ConIdInputBox').value
-    //console.log(message)
     if(message) {
         CreateNewUserMessage(message)
     }
@@ -191,11 +211,16 @@ let OnMessageSend = () => {
 }
 
 let FindKeywords = (text) => {
+    let keywordFound = false
     keywords.forEach(keyword => {
         if(text.includes(keyword)) {
             MessageHandler(keyword)
+            keywordFound = true
         }
     })
+    if (!keywordFound) {
+        KeywordNotFound()
+    }
 }
 
 let CreateNewUserMessage = (textOfMessage) => {

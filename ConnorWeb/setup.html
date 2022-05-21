@@ -60,16 +60,19 @@
             <form method="post" id="create_mesage_form">
                 <h3>Add new keyword</h3>
                 
+                <label for="msg_type_input">Message Type</label>
+                <select name="msg_type_input" id="msg_type_input" required>
+                    <option value="1">Response on keyword</option>
+                    <option value="2">Welcome message</option>
+                    <option value="3">Sent on not understanding</option>
+                </select>
 
-
-                <label for="keyword_input">Add Keyword</label>
-                <input list="keywords_list" name="keyword_input" id="keyword_input" required>
-                <datalist id="keywords_list">
-
-                </datalist>
+                <label for="keyword_input">Keyword</label>
+                <input type="text" name="keyword_input" id="keyword_input" required>
+                
 
                 <label for="response_input">Response</label>
-                <input type="textarea" id="response_input" required>
+                <textarea id="response_input" required></textarea>
 
                 <input type="button" value="Add Response" id="add_keyword">
             </form>
@@ -94,6 +97,7 @@
                 </select>
 
                 <input type="button" value="Edit Bot" id="edit_bot_submit">
+                <input type="button" id="delete_bot" value="Delete Bot" class="redBTN">
             </form>
 
             
@@ -108,6 +112,7 @@
                 <textarea name="edit_response" id="edit_response" required></textarea>
 
                 <input type="button" id="edit_keyword_submit" value="Edit keyword">
+                <input type="button" id="delete_keyword" value="Delete keyword" class="redBTN">
             </form>
         </div>
 
@@ -116,7 +121,15 @@
             <button><a href="#create_bot_form">Create bot</a></button>
             <button><a href="#create_mesage_form">Create message</a></button>
             <button><a href="#edit_bot_form">Edit bot</a></button>
-            <button><a href="#edit_message_form">Edit message</a></button>       
+            <button><a href="#edit_message_form">Edit message</a></button> 
+            
+            <h4>Bot code (insert to your web)</h4>
+            <p id="copyThisCode">
+                &ltscript src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer">&lt/script>
+                &ltscript src="https://kit.fontawesome.com/3ed253b427.js" crossorigin="anonymous"></script>
+                &ltscript src="https://lab.uzlabina.cz/~boudafr/ConnorWeb/ConnorBot/Connor.js" defer onload="StartBot('Replace_this_text_with_your_bot_name')"></script>
+                &ltlink rel="stylesheet" href="https://lab.uzlabina.cz/~boudafr/ConnorWeb/ConnorBot/ConnorStyles.css">
+            </p>
             
         </div>
         
