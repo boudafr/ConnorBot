@@ -1,7 +1,7 @@
 <?php
 $servername = "lab.uzlabina.cz";
 $username = "boudafr";
-$password = "1egribf7";
+$password = "";
 $database = "boudafr_DMP";
 
 try {
