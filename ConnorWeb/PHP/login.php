@@ -9,7 +9,7 @@ class login_class {
         $servername = "lab.uzlabina.cz";
         $username = "boudafr";
         $database = "boudafr_DMP";
-        $password = "1egribf7";
+        $password = "";
 
         try {
             $this->conn = new PDO("mysql:host=$servername;dbname=$database", $username, $password);
